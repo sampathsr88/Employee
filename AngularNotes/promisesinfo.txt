@@ -1,0 +1,214 @@
+ promises:
+ ---------
+ *promise is a javascript class to run unit of code asynchronoulsy
+  by calling callback funcs
+ *syntax:
+  let <promiseobjectvar>=new Promise((resolve,reject)=>{
+                               unit of code for async exec
+                        resolve(data);-->calling success func
+                           or
+                        reject(errorinfo)-->calling error func
+                                               })
+
+ *promise can be consumed using then method by registring
+  callback funcs
+  [then method is similar to subscribe of observable]
+
+   <promiseobjectvar>.then(
+          (successdata)=>{
+                          ..
+                         },
+          (errorinfo)=>{
+                        ..
+                       }
+                         ); 
+
+example:
+--------
+*goto root level and click on new file button
+  promisesdemo.js
+       |
+//create promise1
+let promise1=new Promise((resolve,reject)=>{
+    console.log("promise1 exec started");
+    setTimeout(()=>{
+        resolve("data provided by promise1");
+
+    },5000);
+});
+//create promise2
+let promise2=new Promise((resolve,reject)=>{
+    console.log("promise2 exec started");
+     resolve("data provided by promise2");
+   
+});
+//consuming promises
+promise1.then(
+    (successres)=>{
+        console.log(successres)
+    },
+    (errorres)=>{
+        console.log(errorres);
+    }
+);
+promise2.then(
+    (successres)=>{
+        console.log(successres)
+    },
+    (errorres)=>{
+        console.log(errorres);
+    }
+);
+*goto terminal
+ >node promisesdemo.js
+  promise1 exec started
+promise2 exec started
+data provided by promise2
+data provided by promise1
+
+ *in the above case 2 promises will run parallely because of
+  asynchronous exec,the response can be in any order
+  [first promise2 then promise1 depends on which ever completes
+  task first]
+
+promises vs observable:
+-----------------------
+1.promise can emit data only once to callback func
+  [resolve can be used only once to call callback func]
+
+  observable can emit data more than one time to callback func
+  [observer.next can be used any numb of times to call callback func]
+
+2.promise is not lazy
+  [promise will run the code without consuming also]
+
+  observable is lazy
+  [observable will run the code if callback funcs are
+   registered]
+
+3.promise doesn't allow cancellation
+
+  observable allows cancellation[unsubscribing]
+
+conclusion:
+  observable is an advancement over promises
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

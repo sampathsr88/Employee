@@ -1,0 +1,159 @@
+functions in javascript:
+------------------------
+*function is a small unit of code for reusability and
+ easy maintenance
+*function without name is called "anonymous function", 
+ this is mostly used in callbacks
+*syntax:
+   function <funcname>(para1,..)  ->named function
+   {  ... }
+
+   function(para1,..)  -->unnamed function[anonymous func]
+   { ..  }
+*anonymous function is used as inner function in callbacks
+     client app                     server app[api]
+        |
+   getprods(getresponse)------------>getprods(funcptr)
+    { ... }                          {
+                                       ...
+     getresponse(data)<-------------- funcptr(data);
+     { ...  }                        }
+   (or)
+  getprods(function(data)
+           {  ..});
+             |
+          inner func[anonymous func]
+*javascript supports 2 types of functions
+  1.normal function
+        this provides traditional way of declaring
+        a function
+    syntax:
+       function <funcname>(--)
+        { .. }
+  2.arrow function
+       this provides new style|way of declaring a
+       function using arrow symbol [ => ],it is also
+       called "fat arrow function"
+    syntax:
+      <funcname>=(para1,..)=>{
+                             ...
+                             };
+         -> normal arrow
+         => fat arrow
+*arrow function looks like anonymous function,this is
+ mostly used in callbacks,this will simplify developer
+ job
+
+   getprods(function(--){
+                      ...
+                        }); -->inner func as normal func
+
+
+   getprods((para)=>{           -->inner func as arrow func
+                ..
+                 }); 
+example:
+--------
+*click on new file button
+   funcsdemo.js
+      |
+ function sum(a,b)
+{
+    let res=a+b;
+    console.log("sum:"+res);
+}
+//arrow func
+let mult=(a,b)=>{
+    let res=a*b;
+    console.log("mult:"+res);
+}
+//calling funcs
+sum(20,40);
+mult(20,40);
+*goto terminal
+  >node stringdemo
+        ...
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

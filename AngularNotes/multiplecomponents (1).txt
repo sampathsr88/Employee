@@ -1,0 +1,378 @@
+ working with multiple components:
+ ---------------------------------
+   headercomponent--->inline style[without css]
+                      inline template[without html]
+              |
+   it should come with only ts file
+
+
+   bodycomponent--->css file
+                    html file
+          |
+  it should come with ts,html and css file
+
+ *create headercomponent into app1 project
+    ->goto terminal
+      >ng g c header --inline-template true
+      it will create a headercomponent with inlinestyle applied
+      from angular.json and inlinetemplate applied from component
+      level,it will create only one file[ts file]
+
+
+ *goto header.component.ts[src-->app folder->header folder]
+  import{Component} from "@angular/core";
+  @Component({
+    selector:"app-root",
+    template: `
+       <table style="margin:20px">
+       <tr>
+       <td>
+       <img src="../assets/logo.gif" height="90" width="90">
+       </td>
+       <td>
+       <h2>peers info</h2>
+       <h3>ameerpet,hyd</h3>
+       </td>
+       </tr>
+       </table>
+  `,
+  styles: ["h2{color:blue}","h3{color:green}","td{padding:12px}"]
+})
+export class HeaderComponent implements OnInit {
+
+  constructor() { }
+
+ note:
+  ->template allows markup in multiple lines using backtick[`]
+
+*create a bodycomponent with css and html files
+  [goto terminal]
+ >ng g c body --inline-style false --flat
+  it will create component with 3 files[ts,css and html] into
+  app folder
+
+ *goto body.component.ts
+    ..
+ @Component({
+   selector:"app-body",
+ templateUrl:"./body.component.html",
+   styleUrls:"./body.component.ts"
+         })
+ export class BodyComponent ..
+ {}
+ *goto body.component.html
+  <div>
+    welcome to peers technologies..
+</div>
+ *goto body.component.css
+  div{
+    font-size:x-large;
+    margin:25px;
+}
+*place an image file into assets folder
+  ->goto src folder and select assets folder
+  ->goto windows explorer
+  ->drag and drop logo.gif[e:\images] into assets folder
+
+*goto app.module.ts to set header and body components with 
+
+ [whenever a component is created using generate option,it will
+  import component  into appmodule and placed into declarations
+  automatically]
+
+    ...
+ @NgModule({
+     ...,
+  bootstrap:[HeaderComponent,BodyComponent]
+       })
+   ...
+
+ *goto index.html to display bootstrap components info
+    ...
+  <body>
+   <app-header></app-header>
+   <app-body></app-body>
+
+  >ng s -o
+    ..
+
+ 
+ note:
+ -----
+ bootstrapping multiple components is not a recommended practice
+ in realtime,the same can be achieved using nested component
+     ->goto index.html
+       [remove app-body selector]
+         ...
+       <body>
+        <app-header></app-header>
+     ->goto app.module.ts
+      [remove bodycomponent from bootstrap]
+       ...
+      bootstrap:[HeaderComponent]
+
+     ->goto header.component.ts
+         ....
+      template:`
+               <table ..>
+                  ...
+               </table>
+             <app-body></app-body>  -->calling bodycomponent
+             `                         using selector
+
+    ->goto browser
+         or
+      >ng s -o
+
+
+ * AppModule
+     declarations--...,headercomponent,bodycomponent
+      boootstrap -headercomponent               |
+                       |                        |
+                  template--->  <table ..>      |
+                                   ...          |
+                                </table>        | 
+                                <app-body> ------
+                                   |
+                              presented to user with browser
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

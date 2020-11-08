@@ -1,0 +1,235 @@
+ FormBuilder class:
+ ------------------
+ *this is used to create a formgroup with set of properties
+  without using FormControl class
+ *syntax:
+   this.<formgroupname>=this.<formbuilder>.group({
+     property1:["initial",[validations]],
+          ...
+                  });
+ *requirement:
+ username---required and pattern[alphabets,space and dot]
+ password---minimum 6 chars and maximum 10 chars
+ mobile  ---10 digit number
+ gender  ---required [radiobuttons]
+ skillset --required [ listbox--multiple selection]
+ country  --required [ dropdownlist--single selection] 
+ termsaccepted---requiredtrue [checkbox]
+
+*for all the props by default will be updateOn change,only
+ mobile property requires updateon blur 
+
+example:
+--------
+ >ng g c mdf2 --flat
+*goto mdf2.component.ts
+    ..
+ import{FormBuilder,FormGroup,Validators} from "@angular/forms";
+     ..
+  selector:"app-root"
+     ..
+ export class Mdf2Component ..
+ {
+ formbuilder:FormBuilder;
+ jobmodel:FormGroup;
+ info:string;
+   constructor() {
+    this.formbuilder=new FormBuilder();
+    this.jobmodel=this.formbuilder.group({
+      username:["",[Validators.required,Validators.pattern("[A-Za-z.\\s]{1,}")]],
+      password:["",[Validators.minLength(6),Validators.maxLength(10)]],
+      mobile:["",{validators:[Validators.pattern("[0-9]{10}")],updateOn:'blur'}],
+      gender:["",[Validators.required]],
+      skillset:["",[Validators.required]],
+      country:["",[Validators.required]],
+      termsaccepted:[false,[Validators.requiredTrue]]
+    });
+    }
+
+ register()
+    {
+     this.info=this.jobmodel.value.username+":"+this.jobmodel.value.mobile+":"+this.jobmodel.value.gender+":"+this.jobmodel.value.skillset+":"+this.jobmodel.value.country+":"+this.jobmodel.value.termsaccepted;
+    }
+*goto mdf2.component.html
+ 
+<form [formGroup]="jobmodel">
+    <div style="margin:20px;font-size:x-large">
+    <input formControlName="username" placeholder="username">
+    <span *ngIf="jobmodel.controls.username.hasError('required')">
+        enter username
+    </span>
+    <span *ngIf="jobmodel.controls.username.hasError('pattern')">
+        enter proper username
+    </span>
+    <br>
+   <input formControlName="password" placeholder="password">
+   <span *ngIf="jobmodel.controls.password.invalid">
+       enter password between 6 to 10 chars
+   </span>
+   <br>
+  <input formControlName="mobile" placeholder="mobile">
+  <span *ngIf="jobmodel.controls.mobile.invalid">
+    enter 10 digit
+</span>
+   <br>
+   <input type="radio" formControlName="gender" value="male"> male
+   <input type="radio" formControlName="gender" value="female"> female
+   <!--grouping radiobuttons is based on formcontrolname property-->
+   <span *ngIf="jobmodel.controls.gender.invalid">
+    select gender
+   </span>
+   <br>
+   skillset:<br>
+   <select formControlName="skillset" multiple size="3" style="width:140px">
+    <option>angular</option>
+    <option>reactjs</option>
+    <option>nodejs</option>
+    <option>denojs</option>
+    <option>azure</option>
+   </select>
+   <span *ngIf="jobmodel.controls.skillset.invalid">
+       select sillset..
+   </span>
+    <br>
+   <select formControlName="country">
+       <option value="">-select country-</option>
+       <option value="ind">india</option>
+       <option value="usa">united states</option>
+   </select>
+   <span *ngIf="jobmodel.controls.country.invalid">
+    select country..
+   </span>
+   <br>
+   <input type="checkbox" formControlName="termsaccepted"> i agree terms and conds
+   <span *ngIf="jobmodel.controls.termsaccepted.invalid">
+       select terms and conds
+   </span>
+   <br>
+   <input type="button" value="register" (click)="register()" [disabled]="jobmodel.invalid">
+   <br>
+   {{info}}
+    </div>
+</form>
+*set Mdf2Component as bootstrap
+ >ng s -o
+   ...
+
+note:
+-----
+*textbox can be applied with border color as red if validation is
+ not success using input.ng-invalid css class
+    ->goto src folder and select styles.css
+          span{
+              ...
+              }
+         input.ng-invalid{
+    border:2px solid red
+                         }
+    ->goto browser
+           ..
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

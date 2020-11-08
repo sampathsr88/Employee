@@ -1,0 +1,69 @@
+ data binding:
+ -------------
+   logincomponent                           template
+        |                                      |
+   logic to validate                          ...
+    user acct                              <span id="s1"></span>
+    [invalid]
+       |
+  msg="invalid name or password"
+
+ document.getelementbyid("s1")
+   .innerHtml=msg;
+
+      |
+ manual approach          -->to be avoided---> databinding
+ mixing html with logic                       [<span>{{msg}}</span>]
+
+*establishing a relation between component[variable|method]
+ and template[html] is called databinding
+*the main advantage of databinding is avoiding manual coding to
+ developer and seperating html from logic[provides readability and
+ easy unit testing of component class]
+*databinding can be classified into 2 types
+  1.one way databinding
+  2.two way databinding
+
+one way databinding:
+--------------------
+*data flow from component to template (or) template to component is
+ called "one way databinding"
+*one way databinding can be implemented in different ways
+  1.interpolation
+  2.property binding
+  3.style binding
+  4.event binding
+  5.attribute binding
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

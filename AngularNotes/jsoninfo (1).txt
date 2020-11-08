@@ -1,0 +1,287 @@
+ Json[Javascript Object Notation]
+ --------------------------------
+ *Json is a data storage format in the form of key and value pairs
+ *Json is mostly used to transport data between client and server
+  in ajax implementation
+ *syntax:
+    1.single json object
+          {"key1":"value1",..}
+
+    2.Json collection [array of json objects]
+          [
+            {"key1":"value1",..},
+            {"key1":"value1",..},
+               ..
+          ];
+ *advantages of json over xml:
+  1.light weight over xml[consumes less memory over xml]
+
+     <product>                   --->xml---> 65 bytes
+      <prodid>p001</prodid>
+      <prodname>dell</prodname>
+     </product>
+
+    {prodid:"p001",prodname:"dell"} -->json--> 30 bytes [light weight]
+                                                      |
+                                    ->communication faster between
+                                      client and server,this leads
+                                      better performance
+
+  2.faster interpretaion with browser
+
+   server                  browser
+    xml  ------------------>xml parser      --->loading------->javascript
+                            will verify xml     into memory    manipulation
+                              [slow]
+
+   json ------------------->javascript engine interpretaion and manipulation
+                            [faster]
+
+  3.developer friendly
+          manipulating json data will be very easy compare to xml
+
+      p.prodid-->p001
+      p.prodname="hp"
+
+example:
+--------
+  >ng g c jsondemo --flat
+*goto jsondemo.component.ts
+    ...
+ selector:"app-root"
+    ...
+export class JsondemoComponent ..
+{
+  //single json object
+  orderinfo={"name":"charan","prods":["samsung","hp"],"address":{"plotno":666,"street":"v.v.nagar","city":"hyd"}};
+  //json collection
+  prods=[
+    {"pid":"p001","name":"samsung","price":10000,"pic":"samsung.jpg"},
+    {"pid":"p002","name":"htc","price":7000,"pic":"htc.jpg"},
+    {"pid":"p003","name":"dell","price":50000,"pic":"dell.jpg"},
+    {"pid":"p004","name":"oppo","price":6000,"pic":"oppo.jpg"},
+  ];
+
+*goto jsondemo.component.html
+ <div class="container" style="font-size:x-large">
+    <div class="panel panel-primary">
+         <div class="panel-heading">
+             Order Details
+         </div>
+         <div class="panel-body">
+            ordername:{{orderinfo.name}} <br>
+                prods: <br>
+                <ul>
+                    <li *ngFor="let p of orderinfo.prods">
+                        {{p}}
+                    </li>
+                </ul>
+                 <br>
+             address:{{orderinfo.address.plotno}},{{orderinfo.address.street}},{{orderinfo.address.city}}   
+         </div>
+    </div>
+</div>
+<hr>
+<!--read prods json collection to display using html table-->
+<table class="table table-bordered" style="font-size:x-large">
+ <tr>
+     <th>sno.</th>
+     <th>pid</th>
+     <th>name</th>
+     <th>price</th>
+     <th>pic</th>
+ </tr>
+<tr *ngFor="let p of prods;let i=index" 
+[style]="{'background-color':p.price>8000?'yellow':'green'}">
+    <td>{{i+1}}</td>
+    <td>{{p.pid}}</td>
+    <td>{{p.name}}</td>
+    <td>{{p.price}}</td>
+    <td>
+        <img src="../images/{{p.pic}}" height="100" width="100">
+    </td>
+</tr>
+</table>
+
+*place image files[dell.jpg,samsung.jpg,htc.jpg and oppo.jpg] into
+ images folder
+*set JsondemoComponent as bootstrap
+
+*place bootstrap cdn links into index.html below head tag
+    ...
+ <head>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   ..
+
+ >ng s -o
+    ...
+
+note:
+-----
+*in the above case ngfor will create tr tag to each element[prod info]
+ present in prods collection,if the price is > 8000 then the tr
+ backcolor will be yellow else green
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

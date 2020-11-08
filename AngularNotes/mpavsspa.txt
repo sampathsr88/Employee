@@ -1,0 +1,105 @@
+ MPA[Multi Page Application] vs SPA[Single Page App]
+ ---------------------------------------------------
+ *web app[or website] with multiple pages,each page
+  will have its own request to server and response
+  to client is called MPA
+
+   browser                     webserver
+     |
+ [masterpage|layoutpage]
+  home about-------------------->aboutpage exec
+                                    |
+       contact                  layoutpage|masterpage 
+                                    |
+               <-----------------output[html+css+js]
+ home about ..
+      contact  ------------------->contactpage exec
+
+  aboutpage info
+
+ problems:
+    ->each request will goto server,after execution
+      server will provide response,browser will
+      reload html,css and js
+    ->response will be slow[performance will be
+                            effected]
+    ->it will not support offline exec
+
+*web app[or website] with single mainpage and other
+ pages will be loaded as a part of mainpage without
+ reloading|refreshing mainpage is called SPA
+   eg: gmail,youtube,..
+
+  advs of spa:
+    ->complete navigation will be in the client
+      system
+      [single page app works like desktop app in the
+       client system,only initial req will goto server
+       to download spa->angular app|react app]
+    ->response will be faster,this leads to
+      better performance
+    ->it will avoid reloading html,css and javascript
+    ->it works offline with the data available in
+       client system
+
+  drawbacks:
+     ->it is not search friendly 
+*the one and only one purpose of angular|react in
+ realtime is to develop single page app
+
+   krlppeers@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

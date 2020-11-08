@@ -1,0 +1,37 @@
+ oops[object oriented programming synopsis]
+ ------------------------------------------
+ *object oriented programming synopsis are 4 things
+  1.data encapsulation
+        combining|binding related fields and methods as one unit
+        is called "data encapsulation"
+    practical:
+         class
+
+  2.data abstraction
+        hiding secured things|complexity is called "data abstraction"
+     practical:
+         object
+
+   user|developer------> object             class
+       |                   |                  |     
+    can access           a and b           a-public                                            
+    only a                                b-private
+
+  3.inheritance
+          creating new entity based on existing entity
+
+  4.polymorphism--poly + morphism
+                    |      |
+                  many    forms
+           many forms of a single object is called "polymorphism"
+     practical:
+           method overriding,overloading and interface
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,750 @@
+ interpolation:
+ --------------
+ *mixing component variable with html text using an expression[{{}}]
+  is called "interpolation"
+ *interpolation requires double curly braces
+ *syntax:
+    <tagname>
+    text ..  {{varname}}
+    </tagname>
+
+ *eg:
+   name="rlp"  job="trainer"
+
+   <h2>
+   {{name}}  is a {{job}}
+   </h2>
+          |
+   angular will substitute variables value into
+   html text
+          |
+   <h2>
+  rlp is a trainer
+   </h2>
+          |
+      browser
+  rlp is a trainer
+
+property binding:
+-----------------
+*providing component variable value to html element property is
+ called "property binding"
+    (or)
+ binding component variable to html element property is
+ called "property binding"
+
+*property binding requires square brackets
+*syntax
+   <tagname [propertyname]="varname">
+
+*html element loaded into browser DOM will be considered as an
+ object[DOM object],html element attributes are considered as
+ properties
+                                     browser DOM
+  <input type="text"  -------------> textbox object
+         value="..">                     |
+                                      value property
+
+  <button disabled ..>------------->button object
+            |                          disabled property
+    html attributes
+
+  eg:
+    price=100;
+
+  <input value="price"> ---> not accepted in angular
+
+
+  <input [value]="price"> -->accepted angular
+        |
+  angular exec
+        |
+  <input value="100"> -->browser
+
+example:
+--------
+*goto vs code and open app1
+*goto terminal
+ >ng g c oneway --flat
+ it will create a component with 2 files[ts and html]
+
+
+*goto oneway.component.ts [src-->app folder]
+    ...
+ selector:"app-oneway"
+    ...
+ export class OnewayComponent ..
+ {
+  prodid:string="p001";
+  prodname:string="dell";
+  prodpic:string="dell.jpg";
+
+*goto oneway.component.html [src-->app folder]
+ <div style="font-size:x-large;border:3px solid black;margin:25px;width:30%">
+prodid: {{prodid}} | <span [innerHtml]="prodid"></span> <br>
+name  : {{prodname}} <br>
+ pic  : <br>
+ <img src="../images/{{prodpic}}" height="100" width="100">
+</div>
+
+*goto app.module.ts
+    ...
+ bootstrap:[OnewayComponent]
+
+*goto index.html
+     ...
+  <body>
+ <app-oneway></app-oneway>
+
+*place dell.jpg file into project
+  ->goto explorer
+  ->rc on src folder and select new folder
+  ->provide folder name as images
+  ->drag and drop dell.jpg file from windows explorer[e:\images] 
+    into images
+
+*goto explorer and select angular.json
+    ...
+ "assets":[..,"src/assets","src/images"]
+    ...                         |
+                           included
+
+ >ng s -o
+    ...
+
+ note:
+ -----
+ by default angular will consider image files present in assets
+ folder of the project,if it is other than assets folder we need
+ to do a setting in angular.json
+
+ interpolation vs propertybinding:
+ ---------------------------------
+ 1.interpolation allows concatenating a variable with string
+   property binding doesn't allow concatenating a variable with string
+
+   images folder-->dell.jpg
+
+   prodpic="dell.jpg";
+
+   <img src="../images/{{prodpic}}">  -->accepted
+                |            |
+             string   +   variable
+
+  <img [src]="../images/prodpic">     -->not accepted
+                 |
+             entire content in double quote will
+             be treated as a variable
+ 2.interpolation doesn't support html string
+   property binding supports html string
+   [string with html tags is called html string]
+
+    ->goto oneway.component.ts
+           ...
+       prodpic:string="dell.jpg";
+      msg:string="<h2>it is html string</h2>";
+
+   ->goto oneway.component.html
+      <div ..>
+        ..
+      </div>
+      {{msg}} <br>
+<span [innerHtml]="msg"></span>
+
+     >ng s -o
+       ...
+    <h2>it is html string</h2>  [interpolation]
+
+        it is html string       [applied with h2 tag->propertybinding]
+
+ 3.interpolation doesn't allow assigning boolean type data
+   property binding allows assigning boolean type data
+
+   validations---> invalid:boolean--true|false
+
+    button-->disabled--invalid
+
+   eg:
+    ->goto oneway.component.ts
+        ...
+     invalid:boolean=true;
+
+    ->goto oneway.component.html
+         ...
+     <span [innerHtml]="msg"></span>
+        <br>
+     <button [disabled]="invalid">button with prop binding</button> <br>
+     <button disabled="{{invalid}}">button with interpolation</button>      
+
+    ->goto browser
+          ...
+      button with prop binding     -->disabled
+      button with interpolation    -->disabled
+
+    ->change invalid variable value to false
+    ->goto browser
+        ...
+      button with prop binding     -->enabled
+
+      button with interpolation    -->disabled 
+
+ 4.interpolation is developer friendly compare to 
+   property binding
+
+   name="rlp"
+
+   <h2>                    <h2>welcome to <span [innertHtml]="name">
+  welcome to {{name}}                     </span> 
+   </h2>                   </h2>
+
+  <td>{{prodid}}</td>
+
+sanitization in angular:
+------------------------
+*angular will implement sanitization internally to avoid unnecessary
+ content loading into angular app
+*developer can bypass sanitization to the trusted url by
+ using DomSanitizer class with bypasssecuritytrustresourceurl
+ method
+
+example:
+--------
+*drag and drop movie1.mp4[e:\videos] into assets folder
+*goto oneway.component.ts
+    ...
+ import{DomSanitizer} from "@angular/platform-browser";
+    ...
+ export class OnewayComponent ..
+ {
+    ...
+  unsafeurl:string="../assets/movie1.mp4";
+  safeurl:any;
+  constructor(dm:DomSanitizer)
+  {
+  this.safeurl=ds.bypassSecurityTrustResourceUrl(this.unsafeurl);
+
+  }
+
+ *goto oneway.component.html
+ <iframe [src]="safeurl" height="200" width="200"></iframe>
+
+ <div ..>
+  ...
+
+  >ng s -o
+    ...
+ note:
+ -----
+ bypasssecuritytrustresourceurl method will attach some info to
+ unsafeurl,this info will inform angular the url is a trusted one,
+ so that angular will play video
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+ 

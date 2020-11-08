@@ -1,0 +1,258 @@
+ collections in typescript:
+ --------------------------
+ *typescript supports 4 types of collections
+   1.Map collection
+   2.Set   "
+   3.WeakMap "
+   4.WeakSet "
+ *this collections are supported with es6
+
+ Map collection:
+ ---------------
+ *Map is a collection of key|value pairs
+ *key and value can be of any type,key should be unique
+ *syntax:
+   let <mapvarname>=new Map();
+
+ methods:
+ --------
+ 1.set(key,value)--it will add|modify map collection element
+ 2.get(key)      --it will return element value based on key
+ 3.delete(key)   --it will delete element based on key
+ 4.has(key)      --it will return true|false
+                     true--key is existing
+                     false--key is not existing
+ 5.keys          --it will return all the keys
+ 6.values        --it will return all the values
+ 7.entries       --it will return key and value pairs
+ 6.size          --it will return collection length
+    ..
+example:
+--------
+*goto tsconfigdemo1 folder
+*create a new file
+  mapdemo.ts
+     |
+ let map=new Map();
+map.set(1,"angular");
+map.set(2,"reactjs");
+map.set(3,"vuejs");
+console.log(map);
+console.log(map.get(1));//angular
+map.set(1,"angular10");//not an error,it will modify
+console.log(map.get(1));
+map.delete(3);
+console.log(map.has(3));//false
+//reading keys
+for(let key of map.keys())
+{
+    console.log(key);
+}
+//reading key and value pairs
+for(let[key,value] of map.entries())
+{
+    console.log(key,value);
+}
+*goto terminal
+  >tsc mapdemo.ts -t es6
+  >node mapdemo
+      ...
+
+WeakMap class
+-------------
+*weakmap is a collection of key|value pairs same as Map collection,but
+ it allows key only as an object
+*setting key object to null will remove element from weakmap collection
+ automatically
+
+   user1={name:"aaa"}   msgs=["hi","hello"]
+   user2={name:"bbb"}   msgs=["fine",".."]
+
+      weapmap-->    user1  msgs
+                    user2  msgs
+
+    user1=null-->corresponding element will be removed
+                from weakmap
+                       |
+                    user2 msgs
+*syntax:
+   let weakmap=new WeakMap();
+*methods:
+  1.set(key,value)
+  2.get(key)
+  3.delete(key)
+  4.has(key)
+     ...
+example:
+--------
+*create a new file
+   weakmap.ts
+      |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  

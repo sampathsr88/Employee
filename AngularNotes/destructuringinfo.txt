@@ -1,0 +1,236 @@
+ destructuring in typescript:
+ ----------------------------
+ *assigning array elements to normal variables in a simplified way
+  is called "destructuring"
+
+   eg:
+    let cities=["hyd","bang","mumbai","chennai"];
+
+    var city1=cities[0];  -->normal approach
+    var city2=cities[1];
+
+
+    var[city1,city2]=cities;  ->destructuring
+          |       |
+    assigned with 2nd element
+     1st element
+
+    var[city1,,city3]=cities;
+         |       |
+      1st ele  3rd element
+ *destructuring is supported by es6 and typescript
+
+example:
+--------
+*goto vs code and open typescript folder
+*create new file
+   destructuringdemo.ts
+          |
+ var cities=["hyd","bang","chennai","mumbai"];
+
+var[city1,city2,city3,city4,city5,city6]=cities;//no error[city5 and city6 will not be assigned with any data]
+console.log(city1,city2);
+
+
+var[city1,,city3]=cities;
+console.log(city1,city3);
+
+var[city1,...others]=cities; //spread operator makes others var as an array,this will receive all the elements other than 1st element
+console.log(city1,others);
+
+var mobiles:string[]=["samsung","htc"];
+var laptops:string[]=["dell","hp"];
+var prods:string[]=[...mobiles,...laptops]; //merging 2 arrays into a single array
+console.log(prods);
+//mutable and immutable
+/*var cities1=cities;//["hyd","bang","chennai","mumbai"] -->mutable array
+cities1[0]="hyderabad";
+console.log(cities[0]);//hyderabad  */
+
+var cities1=[...cities];  //-->immutable array
+cities1[0]="hyderabad";
+console.log(cities[0]);//hyd
+
+ *goto terminal
+  >tsc destructuringdemo.ts
+  >node destructuringdemo
+       ...
+
+ note:
+ -----
+ 1.mutable and immutable array
+    ->the array or variable which will change orginal copy is
+      called mutable
+    
+      cities1=cities;
+
+      cities ------------->  hyd bang chennai mumbai
+
+      cities1------------->
+ 
+    ->the array or variable orginal copy will not be changed is
+      called "immutable",this can be implemented using spread
+      operator
+        cities=[...cities];
+
+      cities---------------->hyd  bang chennai mumbai
+
+
+     cities1--------------->hyd bang  chennai mumabi
+
+      cities1[0]="hyderabad";
+
+      mutable-->orginal copy will be modified
+   immutable --->orginal copy will not be modified[spread operator]
+
+linking js file to a webpage:
+-----------------------------
+*create a new file
+   destructuringdemo.html
+           |
+     <html>
+       <head>
+         <script src="destructuringdemo.js">
+         </script>
+       </head>
+     </html>
+*rc on editor area and select open with live server
+ [it will open current html page with browser]
+
+*rc on browser document area and select inspect [or go with f12]
+*select console tab
+         ...
+
+     array(3) [expand]
+         ...
+
+
+ destructingdemo.ts---->tsc-->destructuringdemo.js-->destructingdemo.html-->browser
+                                    |
+                              executed using node
+                              command from command window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    

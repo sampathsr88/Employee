@@ -1,0 +1,241 @@
+ class in es6[or es2015]
+ -----------------------
+ *es6 is providing "class" keyword to create a class,it
+  supports object oriented features[like inheritance,static,..]
+ *syntax:
+     class <classname>
+     {
+        fieldname;  (or) #fieldname;
+          ...
+
+        constructor(para1,..)
+        {
+         this.fieldname=para1;
+            ...
+        }
+        <methodname>(para1,..)
+        {  ..  }
+     } 
+ *es11[es2020] is providing # symbol to declare field or
+  method as private,private field|method will not be
+  accessible with object variable
+ *constructor is a special type of funtion,which will
+  be executed automatically when the class object is
+  created,constructor will initialize object data
+ *constructor func name should be "constructor",in
+  other languages[like c#,java,..] constructor name
+  should be same as class name
+example:
+--------
+*goto vs code and open es folder
+*create new file
+   es6classdemo.js
+        |
+  class student
+{
+    studid;
+    studname;
+    constructor(studid1,studname1)
+    {//initializing object data
+        this.studid=studid1;
+        this.studname=studname1;
+    }
+
+    setstudent(studid1,studname1)
+    {//modifying object data
+        this.studid=studid1;
+        this.studname=studname1;
+    }
+    display()
+    {
+        console.log("studid:"+this.studid+" studname:"+this.studname);
+    }
+}
+//creating an object
+let obj=new student("s001","charan");//constructor func exec
+obj.display();
+obj.setstudent("s002","raju");
+obj.display();
+onsole.log("studid:"+obj.studid+" studname:"+obj.studname);
+
+ >node es6classdemo
+      ...
+
+ note:
+ -----
+ *class fields default will be public,so it will be
+  accessible with object variable
+ *in all the places prefix studid and studname with # symbol
+  to declare as a private field
+        class student
+{
+    #studid;
+    #studname;
+    constructor(studid1,studname1)
+    {//initializing object data
+        this.#studid=studid1;
+        this.#studname=studname1;
+    }
+
+    setstudent(studid1,studname1)
+    {//modifying object data
+        this.studid=studid1;
+        this.studname=studname1;
+    }
+    display()
+    {
+        console.log("studid:"+this.#studid+" studname:"+this.#studname);
+    }
+}
+//creating an object
+let obj=new student("s001","charan");//constructor func exec
+obj.display();
+obj.setstudent("s002","raju");
+obj.display();
+console.log("studid:"+obj.#studid+" studname:"+obj.#studname);
+  >node es6classdemo
+        ...
+
+
+*es5 is a stable version supported by maximum browser,the
+ next level comes with es6
+*babel transpiler is used to convert higher level
+ javascript version code into lower level javascript
+ version code
+*javascript is missing following things:
+ 1.no type safety[datatypes cannot be applied explicitly]
+ 2.complete access specifiers are not available
+   [protected,..]
+ 3.interface is not available
+ 4.complex coding[not developer friendly]
+
+ *the solu provided by microsoft is typescript
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+ two way databinding:
+ --------------------
+ *synchronizing data between component variable and html element
+  is called "two way databinding"
+ *this will flow data from component to template and vice versa
+
+  component                       template
+    |         property  binding     |
+ price-100  --------------------> textbox --> [value]="price"
+                 two way            100
+                                     |
+       200  <-----------------------200  --> (input)="price=$event.target.value"
+            event binding
+ *two way databinding is a combination of property binding
+  and event binding
+ *input event will be executed whenever textbox is edited
+ *$event is a handler,this will provide complete info of an event
+ *target property of $event will provide access to a control which is
+  applied with an event,in the above case it will be a textbox,value
+  is a property of textbox to  read textbox data
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

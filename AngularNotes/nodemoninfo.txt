@@ -1,0 +1,211 @@
+nodemon tool|command:
+---------------------
+*nodemon can be used to run js file in watch mode
+*nodemon will monitor for js file changes,whenever the
+ file is modified it will run js file automatically
+*nodemon can be installed using node package
+*npm is a package manager to manage node packages,this
+ comes with 2 things
+   1.npm repository[npmjs.com]
+          this will contain all the node packages
+          [bootstrap,jquery,..]
+   2.npm[node package manager] tool
+          this will install|download node package
+          from npm repository into development system
+
+    development                   npmjs.com
+      system                      [npm repository]
+         |        internet            |
+     npm tool---------------------> nodemon,jquery,..
+             <---------------------
+                downloading
+*npm tool comes with nodejs installation
+*goto command window
+    >npm -v
+*node package can be installed in 2 ways
+   1.local package
+         package available to specific folder|project
+         is called "local package"
+      syntax:
+          npm install <packagename>
+
+   2.global package
+          package available through out system is
+          called "global package"
+     syntax:
+        npm install <packagename> -g [global]
+*project based packages should be local packages,so that
+ packages info will be placed into package.json and it
+ will be included into production build of the project
+
+*commands|tools .. can be installed as global packages,
+ this are not required into production build
+
+  project   -------->production------->
+     |                 build
+  package.json
+    nodemon[not recommended]
+
+   e:\>nodemon <>.js   -->nodemon should be global package
+
+   d:\>nodemon <>.js
+          ..
+
+  jquery-->javascript library|plugin
+    |
+  npm
+    |
+ jquery package
+
+*installing nodemon command as global package:
+   ->goto command window
+       >npm i nodemon -g
+       >nodemon -v
+           ...
+*goto vs code and open es folder
+*goto restparam.js
+    ..
+
+*goto terminal
+  >nodemon restparam
+       ...
+
+*goto restparam.js and modify content
+*nodemon will restart js file exec
+ [goto terminal to see new output]
+ 
+  node command will run js file in normal mode
+  nodemon "         "           in watch mode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          

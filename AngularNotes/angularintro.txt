@@ -1,0 +1,462 @@
+ intro angular:
+ --------------
+ *angular is an open source typescript framework to develop web app
+  and mobile app
+ *ionic mobile framework will use angular for mobile app development
+ *angular in realtime is used for single page app[SPA]
+ *web app with single mainpage and other pages will be loaded as a
+  part of mainpage without reloading|refreshing mainpage
+  is called SPA
+      eg:gmail,..
+ *SPA will provide better performance with faster response and
+  works offline with the data available
+ *angular is not an extension to angularjs,it is completly
+  rebuilt from ground level using typescript language
+ *angular is provided by google in the year 2015 as beta version,
+  the stable release if provided in the year 2016
+ *the current version is angular10[june 25 2020] 
+
+angular features:
+-----------------
+1.component based architecture
+    the main importance of component based arch is simplifying
+    complex ui,this provides reusability,easy maintenance,
+    loosely coupled|parallel development and unit testing will be easy
+
+       webpage
+         |
+          header-->component
+
+ sidebar   ...
+
+         footer-->component
+
+  note:
+   ->angularjs is a mvc based architecture,it is complex arch
+   ->it is similar component based arch of reactjs
+
+2.object oriented programming support
+     what ever we develop in angular will be in the form of a class[typescript]
+   eg:
+     ->component class
+     ->module class
+     ->pipe class
+             ....
+
+   note:
+     angularjs doesn't support object oriented programming
+
+3.better performance
+    angular provides 5+ times better performance over angularjs
+
+4.data binding
+     establishing a relation between a variable and control[html element] is
+     is called data binding
+                 this will provide variable value to html element and
+     html element[textbox] changes to variable automatically without
+     manual coding,this makes developer job easy and faster development
+
+   price variable
+       |
+      100                           textbox[<input id="t1">]
+
+      document.getElementById("t1").value=price;
+            or
+      $("#t1").val(price);
+
+    textbox-->input event-->f1(){
+                      price=$("#t1").val();
+          |
+  this is manual approach
+          |
+  this can be avoided in angular using databinding
+  <input .. [(ngModel)]="price">
+                |
+           databinding
+5.validations support
+    angular is providing builtin code to perform different types
+    of validations,this makes developer job easy and faster development
+             angular supports 2 types of validations
+      i.MDF[Model Driven Form] validations
+     ii.TDF[Template Driven Form] validations
+
+6.server side development support
+      angular supports client and server side web app development
+             angular universal technology|framework is provided by
+     angular team for server side web development by integrating
+     with expressjs@nodejs
+    https://angular.io/guide/universal
+
+7.more languages support
+     angular supports different languages for programming
+      [like javascript,dart and typescript]
+
+         dart-->provided by google
+
+8.animations support
+
+9.routing support
+     this is used to provide navigation between components with in
+     angular app,this allows single page app[SPA] development
+
+10.tooling support
+      angular is providing "angular cli" tool to make
+      development easy and faster
+
+11.ajax support
+       angular is providing httpclient service to work with ajax to
+       call restapi to communicate with database
+  
+  browser
+  angular                  webserver           sqlserver|mongodb|mysql
+   app   ---->ajax------> restapi class--------->database
+                       [webapi,expressjs,..]
+
+12.angular material
+      this is a UI component library to provide rich user intraction
+      with better look and feel
+
+      bootstrap-->twitter
+
+      angular material-->google[angular team]
+                 |
+      native to angular
+
+13.service support with dependency injection[DI]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

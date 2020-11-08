@@ -1,0 +1,240 @@
+ *ngFor directive:
+ -----------------
+ *this is used to read a collection[array] in a sequential order
+ *it is similar to ng-repeat of angularjs
+ *syntax:
+    <tagname *ngFor="let varname of collectionname;
+                     let indexvar=index;
+                     let evenvar=even;
+                     let oddvar=odd;
+                     let firstvar=first;
+                     let lastvar=last;
+                         ...">
+          ...
+    </tagname>
+
+ *ngFor will create  html template[tag] dynamically towards
+  each element present with in a collection|array
+ *ngfor directive is providing set of keywords[options]
+  1.index--it will provide index number of an element,it will
+            start with 0
+
+     sno  pid   ...
+      1                     <td>{{i+1}}</td>
+      2
+
+  2.even--it will provide true|false
+          true--even index element
+
+  3.odd--it will provide true|false
+          true--odd index lement
+
+  4.first--it will provide true|false
+           true--first index element
+
+  5.last--it will provide true|false
+           true--last index element
+
+example:
+--------
+  >ng g c ngfor --flat
+
+*goto ngfor.component.ts
+    ...
+ selector:"app-root"
+    ...
+ export class NgforComponent ..
+ {
+   courses:string[]=["angular","react","nodejs","denojs"];
+
+*goto ngfor.component.html
+ <!--normal display-->
+<ul style="font-size:x-large">
+<li style="color:green">{{courses[0]}}</li>
+<li style="color:red">{{courses[1]}}</li>
+<li style="color:green">{{courses[2]}}</li>
+<li style="color:red">{{courses[3]}}</li>
+</ul>
+
+<!--display using ngfor-->
+<ul style="font-size:x-large">
+    <li *ngFor="let c of courses;let iseven=even" [style.color]="iseven?'green':'red'">
+        {{c}}
+    </li> 
+</ul>
+
+*set NgforComponent as bootstrap
+ >ng s -o
+   ..
+
+note:
+-----
+*in the above example ngfor will create li tag towards each element
+ present in courses array and text color will be applied as
+ green|red based on even|odd index element
+
+ <li *ngFor="..">---->index-0 c-angular --> <li [style.color]="iseven?'green':'..'">
+                            iseven-true            {{c}}
+                                            <li>
+                                                  |
+                                          <li style="color:green">angular</li>
+
+                      index-1 c-reactjs  --> <li style="color:red">reactjs</li>
+                            iseven-false
+
+                           ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

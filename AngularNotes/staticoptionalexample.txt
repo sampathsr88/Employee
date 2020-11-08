@@ -1,0 +1,174 @@
+ optional parameter:
+ -------------------
+ *parameter may or may receive value is called "optional parameter"
+
+   incrsal(amt=2000)
+   { .. }
+
+   incrsal()
+   incrsal(5000)
+
+ *optional para can be declared in 2 ways
+  1.using initialization
+      <methodname>(para:type=value)
+       {  ..  }
+
+  2.using ? symbol
+      <methodname>(para?:type)
+       { .. }
+ *method can have any numb of optional paras,it should be
+  right most
+
+ *requirement:
+      emp class
+         |
+       empno
+       ename  -->non static fields
+       sal
+       count  -->static field
+
+       incrsal(amt=2000)->optional para
+       display -->non static method
+       getempcount()-->static method
+
+ example:
+ --------
+ *goto vs code and open typescript folder
+ *create new file
+    staticoptionaldemo.ts
+           |
+ class emp
+{
+    private empno:number;
+    private ename:string;
+    private sal:number;
+    private static count:number=0;
+    constructor(empno:number,ename:string,sal:number)
+    {
+     this.empno=empno;
+     this.ename=ename;
+     this.sal=sal;
+     //"this" keyword will refer to class fields[object]
+     emp.count++;
+    }
+    incrsal(amt:number=2000)
+    {
+        this.sal=this.sal+amt;
+    }
+    display()
+    {
+        console.log("empno:"+this.empno+" ename:"+this.ename+" sal:"+this.sal);
+    }
+    static getempcount():number{
+        return emp.count;
+    }
+}
+let eobj1=new emp(100,"aaa",12000);//count-1
+let eobj2=new emp(101,"bbb",20000);//count-2
+eobj1.incrsal();//2000
+eobj2.incrsal(3000);//3000
+eobj1.display();
+eobj2.display();
+console.log("numb of emps:"+emp.getempcount());
+
+ *goto terminal
+  >tsc staticoptionaldemo.ts
+  >node staticoptionaldemo
+       ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

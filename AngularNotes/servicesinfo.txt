@@ -1,0 +1,20 @@
+ services in angular:
+ --------------------
+ template1             component1      service            restapi          
+    |                      |              |                  |
+   UI                   method  -----> method             method  ----------->datastore
+ [controls    --------->{ logic }      {                  {                    
+  with events]                          logic[ajax  ------>db connectivity
+                                       }      call]         logic
+                                                           }
+ template2            component2         ..                ..
+    |                    | 
+   UI                  method   ----->                         | 
+ [controls    ------->{ logic }           |
+  with events]       |                  business logic       data access
+                 presentation            layer|tier            layer|tier
+                  layer|tier            [middleware]
+
+                        3 tier (or) n tier architecture in angular
+                         [n tier comes if middleware is extended]
+                  

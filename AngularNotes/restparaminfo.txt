@@ -1,0 +1,68 @@
+ rest parameter:
+ ---------------
+ *rest parameter of a function can receive any number of
+  values
+ *rest parameter acts like an array
+ *rest parameter should be prefixed with 3 dots [...]
+ *syntax:
+    function <funcname>(para1,para2,...para3->rest para)
+    {
+         ...
+    }
+ *function supports only one rest parameter,it should
+  be last parameter
+ *3 dots[...] is called "spread operator",this is
+  introduced with es6
+ *spread operator is used to declare rest parameter
+example:
+--------
+*click on new file button
+    restparam.js
+        |
+   /*function displaycourses(cname1,cname2)
+{
+    console.log(cname1,cname2);
+}
+displaycourses();//undefined undefined
+displaycourses("angular");//angular undefined
+displaycourses("angular","reactjs");//angular reactjs
+displaycourses("angular","reactjs","nodejs");//angular reactjs[3rd value will not be considered]
+*/
+function display(facname,...courses)
+{
+    console.log(facname,courses);
+}
+display("rlp","angular","reactjs");//rlp ["angular","react"]
+display("rlp","angular","reactjs","nodejs"); //rlp ["angular",..]
+*goto terminal
+  >node restparam.js
+        ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

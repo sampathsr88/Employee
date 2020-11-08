@@ -1,0 +1,152 @@
+ Module or NgModule:
+ -------------------
+              AngularApp
+                 |
+            AppModule[root|main module]--bootstrap-homecomponent
+                  |
+ Authentication   Resources             Others      Components|Pipes|..
+  Module           Module               Module      [Homecomponent]
+   |                 |                    |
+RegisterComponent TutorialsComponent   AboutComponent
+LoginComponent    BooksComponent           ...
+ pipes             pipes
+
+*Angular supports modularized application development with
+ collection of modules called NgModules
+*A Module|NgModule is a collection of components,pipes,directives
+ and other modules
+*Every angular app should have a root module,it is also called
+ AppModule
+*Angular app execution will start with AppModule,this AppModule
+ can be loaded for execution using platformbrowserdynamic class
+ syntax:
+   platformbrowserDynamic().bootstrapmodule(AppModule);
+*A typescript class applied with NgModule decorator will be
+ considered as a module by angular
+ syntax:
+   @NgModule({
+      declarations:[],
+      imports     :[],
+      exports     :[],
+     bootstrap    :[],
+         ...
+            })
+  export class <moduleclassname>
+    {}
+
+  1.declarations--it allows placing components,pipes and directives
+                  into a module
+  2.imports     --it allows importing other modules
+  3.exports     --it allows providing components|pipes|modules
+                  present in this module to another module which
+                  imports this module
+
+  module1---------->module2------------------>module3
+    |                  |                         |
+                                          imports:[module2]
+ component1       imports:[module1]       component2 of module1
+ component2       component3,4            component3 of module2
+
+ exports:        exports:[module1,component3]
+ [component2]
+
+ 4.bootstrap--specify main|root component[view] for initial
+              presentation,this acts like home page for
+              angular app,this provides navigation to other
+              components with the help of hyperlinks
+                     bootstrap option can be set with only
+              AppModule
+                    bootstrap allows multiple components,but not
+              a recommended practice
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

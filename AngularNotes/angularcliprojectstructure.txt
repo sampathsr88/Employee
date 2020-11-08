@@ -1,0 +1,455 @@
+ angular cli project structure:
+ ------------------------------
+ *angular project comes with so many files and folders
+  1.package.json
+     ->it will describe project with name,description,..,
+       scripts,dependencies and devdependencies
+     ->scripts section allows developer to run angular cli
+       commands using npm tool
+     ->scripts allows developer to customize angular cli commands
+        eg:
+         ng serve --open --port 3200 can be executed using
+         npm start
+
+         it allows combining more than one cli command into
+         single script
+
+  eg:
+    ->goto explorer window and select package.json
+                   ...
+        "scripts":{
+            "ng":"ng",
+         "start":"ng serve",
+              ...
+         "lint" :"ng lint"
+                  }
+    ->replace ng serve with ng serve --open --port 3200
+        "scripts":{
+                ...
+          "start":"ng serve --open --port 3200"
+    
+    ->goto terminal
+         >npm start
+            ...
+
+    ->combine serve and lint commands into single start script
+          ...
+        "start":"ng lint --fix && ng serve --open --port 3200"
+
+      >npm start
+          |
+      it will perform linting->on success->it will run ng serve
+
+     [normally-->  ng lint --fix
+                   ng serve --open --port3200]
+
+  note:
+    angular is providing linting tool to verify typescript
+    code with some standards|rules,the linting standards|rules
+    are present in tslint.json
+
+ 2.tslint.json--this is linting configuration file,which
+                coding standards|rules for typescript programming
+
+ 3.tsconfig.json--this is typescript configuration file
+ 4.browserslistrc--this is a browsers configuration file,which
+                    contains list of browser supported (or) not
+                    supported by angular app
+       ->goto explorer and select .browserslistrc
+                      ...
+         last 1 chrome
+           ...
+         not IE 9-10 ...
+         not IE 11   ...
+
+    note:
+     by default angular is not supporting IE[9,10 and 11],if you want to
+     provide support remove "not" keyword prefixed to IE9-10 or IE11
+                if you provide support for IE,production bundle will
+     be inlcuded with some javascript[more amt of polyfills],this increase
+    production bundle size
+
+  5. .gitignore--specify files and folders to be skipped at the
+                 time pushing project to github
+                 eg: node_modules folder,..
+
+
+     angularapp  -->git push ---------->github
+         |         [it will push
+   package.json     all files and
+   tsconfig.json    folders except
+   browserslistrc   node_modules folder]
+     ..
+   node_modules
+
+   .gitignore
+       |
+   node_modules
+
+  6.readme.md--this file contains angular project documentation
+  7.angular.json--this file will contain project|application level
+                  settings
+            "schematics":{
+                 "@schematics/angular:component":{
+                       "inlineStyle":true   
+                       "skipTests":true     -->it will based on
+                             },                options used at the
+                        ...                   time of project
+                       }                      creation
+                                       [ng new app1 --inline-style ..]
+
+            "prefix":"app"  -->it will be selector prefix
+                               [ app-root,app-login,..]
+
+            "build":{
+                  ...
+                "index":"src/index.html",
+                "main":"src/main.ts",
+              "assets":["src/assets"]  -->specify project 
+                                          assets folders path
+                                         [assets are images,videos,pdfs,..]
+
+             "styles":["src/styles.css"] -->specify global css files path,this will be
+                                            applied to all the components present in
+                                           different modules of the project
+                    ...
+ 8.e2e folder--this will contain files required for end to end testint,
+               this requires selenium knowledge
+
+ 9.package-lock.json--this will contain list of subpackages required
+                      for dependency and devdependency packages
+
+ 10.node_modules folder--this folder will contain node packages installed
+                         into project[local node packages to project]
+ 11.src folder--this will contain files and folders related to
+                source code of the project,this important folder to
+                the developer
+       i.app folder--this will contain application related files
+                     [component,module,pipe,.. files]
+      ii.main.ts--this is application startup file,which will load
+                  appmodule
+     iii.index.html--this is angular app hosting page
+                     [ts compiled js files will be linked to
+                      index.html]
+     iv.assets folder--place app related asset files
+                       [images,videos,pdfs,..]
+
+     v.environments folder-this will contain environment variables
+                           files
+           environment.ts--this file will contain development stage
+                           environment variables
+       environment.prod.ts--this file will contain production stage
+                           environment variables
+ 
+    vi.styles.css--it will contain global css styles
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

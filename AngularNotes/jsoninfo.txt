@@ -1,0 +1,130 @@
+ Json[Javascript Object Notation]
+ --------------------------------
+ *Json is a data storage format in the form of key and value pairs
+ *Json is mostly used to transport data between client and server
+  in ajax implementation
+ *syntax:
+    1.single json object
+          {"key1":"value1",..}
+
+    2.Json collection [array of json objects]
+          [
+            {"key1":"value1",..},
+            {"key1":"value1",..},
+               ..
+          ];
+ *advantages of json over xml:
+  1.light weight over xml[consumes less memory over xml]
+
+     <product>                   --->xml---> 65 bytes
+      <prodid>p001</prodid>
+      <prodname>dell</prodname>
+     </product>
+
+    {prodid:"p001",prodname:"dell"} -->json--> 30 bytes [light weight]
+                                                      |
+                                    ->communication faster between
+                                      client and server,this leads
+                                      better performance
+
+  2.faster interpretaion with browser
+
+   server                  browser
+    xml  ------------------>xml parser      --->loading------->javascript
+                            will verify xml     into memory    manipulation
+                              [slow]
+
+   json ------------------->javascript engine interpretaion and manipulation
+                            [faster]
+
+  3.developer friendly
+          manipulating json data will be very easy compare to xml
+
+      p.prodid-->p001
+      p.prodname="hp"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

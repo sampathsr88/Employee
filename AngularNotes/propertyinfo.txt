@@ -1,0 +1,223 @@
+ property in typescript:
+ -----------------------
+ *property is used to set or get private field of a class
+ *typescript is providing 2 accessors set and get to declare
+  a property
+ *syntax:
+    public set <propertyname>(para:type)
+    {
+      //set private field of a class,perform calculation
+        or validation with input data[para data]
+    }
+    public get <propertyname>():<type>
+    {
+      //return private field value;
+    }
+  *property is a combination of 2 blocks
+   1.set block--writting|assigning value to property will
+                execute set block
+   2.get block--reading a property will execute get block
+
+  *eg:
+     emp class
+        |
+       sal property [calculate da as 40%sal]
+       da private field
+
+     eobj--emp
+
+   eobj.sal=10000;------------->set block(sal1)
+                                { da=sal1*0.4;
+                                  set value to sal field}
+
+   eobj.sal=eobj.sal+5000;
+                 |
+             reading------------->get block()
+                 |
+               10000 + 5000
+                    |
+                 15000 ---------->set block(sal1)
+ *property looks like public field[variable] with object variable,
+  but internal execution will be like methods
+ *property can be used when you want to perform calculation
+  or validation based on input
+
+example:
+--------
+ *create new file
+   propertydemo.ts
+        |
+ class employee
+{
+    private _empno:number;
+    private _sal:number;
+    private _da:number;
+  constructor(empno:number){
+      this._empno=empno;
+  }
+  //declare sal property
+  public set sal(sal1:number){
+      this._sal=sal1;
+      this._da=sal1*0.4;
+  }
+ public get sal():number{
+     return this._sal;
+ }
+ display(){
+     console.log("empno:"+this._empno+" sal:"+this._sal+" da:"+this._da);
+ }
+}
+let eobj=new employee(100);
+eobj.sal=10000;//da-4000
+eobj.display();
+eobj.sal=eobj.sal+5000; //da-6000
+eobj.display();
+
+ >tsc propertydemo.ts
+    ...
+  Accessors are available while targeting to ES5 or higher
+  [set and get]
+
+ >tsc propertydemo.ts -t es5
+ >node propertydemo
+    ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,186 @@
+ debugging in typescript:
+ ------------------------
+ *line by line execution to identify logical errors is called
+  debugging
+ *debugging typescript requires "debugger" keyword|statement and
+  map file
+ *debugger is a breakpoint to stop normal execution and control will
+  be taken into debug mode
+ 
+  <>.ts-->compile--><>.js------->webpage------>browser
+                                                  |
+                                            it will show js file for
+                                            debugging,but our requirement
+                                            is ts file
+ *map file is a linker file between ts and js,it will execute typescript
+  equivalent javascript code in the background
+ * --sourceMap option is required with typescript compiler to
+   generate map file
+  syntax:
+     tsc <>.ts --sourceMap
+execution:
+----------
+*goto vs code and open typescript folder
+*create new file
+ debuggingdemo.ts
+     |
+ class c1
+{
+    m1(){
+        console.log("method m1");
+    }
+    m2(){
+        console.log("method m2");
+    }
+}
+let obj=new c1();
+obj.m1();
+debugger;
+obj.m2();
+*goto terminal
+  >tsc debuggingdemo.ts --sourceMap
+ it will produce 2 files[debugingdemo.js and debuggingdemo.js.map]
+*create new file
+   debuggingdemo.html
+          |
+       <html>
+        <head>
+   <script src="debuggingdemo.js"></script>
+       </head>
+      </html>
+*goto browser
+ e:\angularbatch29\typescript\debuggingdemo.html
+
+*rc on browser document area and select inspect
+*refresh webpage------->sources
+                          |
+                       debuggingdemo.ts
+                          ...
+                     ->debugger;
+
+*select f8 to perform line by line execution
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

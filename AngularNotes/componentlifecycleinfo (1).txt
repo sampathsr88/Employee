@@ -1,0 +1,445 @@
+ component life cycle:
+ ---------------------
+ *the different stages of component execution are called
+  "component life cycle"
+  1.creating the component[component class object creation]
+  2.rendering component template[html]
+               |
+        <app-child>
+  3.creates and renders children component
+  4.verifying|looking for input property changes
+  5.destroying a component
+ *the methods which will be executed in different stages of
+  component life cycle are called "component life cycle events|hooks"
+  1.ngOnChanges event
+           this will be executed whenever input property value
+           changes,this will receive SimpleChanges object with
+           old and new value
+
+   autocompletecomponent                    displaycomponent
+   [reusable]                                    |
+        |                                 <input [(ngModel)]="s">
+   @Input()
+    value:string;                         <app-autocomplete [value]="s">
+                                                               |
+       <--------------------------------------------------------
+  ngonchanges(obj:SimpleChanges)
+  {
+       obj.newvalue-->textbox value
+  }
+
+  2.ngOnInit event
+         this will be executed after 1st execution of ngOnChanges
+         event and constructor
+             this is mostly used to read input property value
+         only once and subscribing callback funcs to observable
+                this will be executed only once
+  3.ngOnDestroy event
+          this will be executed before destroying a component,this
+          is used to release resources[like unsubscribing] before
+          component destruction
+
+  4.ngDocheck()
+  5.ngAfterContentInit
+  6.ngAfterContentChecked
+  7.ngAfterViewInit
+  8.ngAfterViewChecked
+
+ *component life cycle methods are provided with interfaces
+
+   OnChanges interface------>ngOnChanges method
+   OnInit    interface------>ngOnInit method
+      ...                        ..
+
+  component1 implements interface1
+  {
+    ngOnInit()
+    { .. }
+    ngOnChanges()
+    {}
+    ngOnDestroy()
+    {}
+     ...
+  }
+*angular team is implementing ISP[Interface Segregation Principle]
+ of SOLID principle by placing life cycle methods[hooks] into
+ different interfaces,this makes develop job easy
+
+ constructor vs ngOninit:
+ ------------------------
+ 1.constructor is feature of typescript class
+   ngOnInit is a life cycle hook of angular
+
+ 2.constructor will be executed before input property initialization
+   ngOnInit will be executed after        "    "         "
+
+ 3.constructor supports dependency injection[DI]
+
+   ngOnInit doesn;t support dependency injection[DI]
+
+example:
+--------
+*goto vs code and open app1 folder
+ >ng g class myservice
+
+*goto myservice.ts
+ import{Observable} from "rxjs";
+ export class Myservice
+ {
+ {
+    public getprods()
+    {
+        let obj=new Observable((observer)=>{
+            //write unit of code for async exec
+            let prods:string[]=["samsung","dell","hp"];
+            observer.next(prods);
+            observer.complete();
+       
+       });
+       return obj;
+
+    }
+}
+//client[component]-->this.obj.getprods().subscribe
+
+*create a component
+ >ng g c observabledemo --flat
+*goto observabledemo.component.ts
+ import{Component,OnInit,OnDestroy} from "@angular/core";
+ import{Myservice} from "./myservice";
+   ...
+ selector:"app-root"
+   ..
+ export class ObservabledemoComponent implements OnInit,OnDestroy 
+{
+  obj:Myservice;
+  obsref:any;
+  prodsinfo:string[];
+
+  constructor() {
+    this.obj=new Myservice();
+   }
+  ngOnInit(): void
+   {
+     this.obsref=this.obj.getprods().subscribe(
+       (res:string[])=>{
+         this.prodsinfo=res;
+       },
+       (err)=>{
+         alert(err);
+       },
+       ()=>{
+         alert("observable completed task");
+       }
+     );
+  }
+  ngOnDestroy()
+  {
+    this.obsref.unsubscribe();
+  }
+*goto observabledemo.component.html
+ <ul style="font-size:x-large">
+    <li *ngFor="let p of prodsinfo">
+        {{p}}
+    </li>
+</ul>
+
+*set ObservabledemoComponent as bootstrap
+  >ng s -o
+    ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+                                                                  
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

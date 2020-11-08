@@ -1,0 +1,126 @@
+ FormArray class:
+ ----------------
+ *this is used to create an array of formcontrols (or) formgroups
+  (or) nested formarray
+ *the main importance of formarray class is dynamic controls creation
+  and removing is allowed
+ *this comes with array methods:
+   1.push(item)--it will place item dynamically into formarray class
+   2.remove(index)--it will remove item dynamically from formarray class
+
+
+ *requirement:
+        cartmodel[formgroup]
+     custname--formcontrol prop
+     address --   "
+     prods   --formarray[collection of formgroups->each formgroup will
+                                                   be one prod info]
+
+    custname:textbox
+    address:
+     textarea
+
+    addproduct[button]
+
+   prodid  name  price [table]
+    p001   aaa   7000    remove button
+
+    p002    ..    ...    remove button 
+
+ >ng g c mdf3 --flat
+
+*goto mdf3.component.ts
+      ..
+ import{FormControl,FormGroup,FormArray,Validators} from "@angular/forms";
+      ..
+ selector:"app-root"
+      ..
+ export class Mdf3Component ..
+ {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

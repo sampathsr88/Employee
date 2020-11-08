@@ -1,0 +1,271 @@
+ datatypes in typescript:
+ ------------------------
+ *typescript allows applying datatype explicitly,this provides
+  type safety
+
+  1.number--it allows storing numeric data
+  2.string--it allows storing char or chars
+  3.boolean--it allows true|false
+  4.void --it allows null|undefined,this is mostly used with
+           method which doesn't return any value
+  5.any  --it allows storing any type of data,this is default
+           datatype 
+  6.tuple --it allows collection of dissimilar data
+      eg:
+       let pinfo:[number,string]; -->tuple
+          pinfo[0]=123;
+          pinfo[1]="dell";
+  7.enum --it is a collection of constants
+      eg:
+        enum colors{blue,green,black};//blue=0 green=1 black=2
+
+      let c:colors=colors.green;//c will be 1,the var c can store
+                                  only one among the constants[blue or green or black]
+
+      let cname:string=colors[2];//c will black
+
+    constant values can be anything
+
+     enum colors{blue=10,green,black}; //green-11 black-12
+
+     enum colors{blue=10,green=20,black}; //black-21
+ *typescript is providing let,var and const keywords to declare
+  variables[it is same as es6]
+    syntax:
+       let|var|const <varname>:<datatype>=<value>;
+
+example:
+--------
+*create typescript folder with angularbatch29 folder
+*goto visual studio code and open typescript folder
+*goto explorer and click on new file button
+     datatypes.ts
+          |
+ let cateid:number=100;
+let catename:string="mobiles";
+//tuple
+let pinfo:[string,number];
+pinfo=["samsung",10000];//name price
+//enum type
+enum colors{blue,red,black};
+let color:colors=colors.blue;
+let colorname:string=colors[0];
+
+let isavailable:boolean=true;
+
+console.log(cateid,catename);
+console.log(pinfo[0],pinfo[1]);
+console.log(color,colorname);
+console.log(isavailable);
+
+*goto view menu and select terminal
+   >tsc datatypes.ts
+  it will produce datatypes.js
+
+*execute js file
+   >node datatypes
+       ....
+
+note:
+-----
+*variable declaration without datatype and initialization will be
+ applied with any type
+     let value;  ->it will be applied with any type
+   
+    value=100;
+    value="xyz";
+
+*variable declaration without datatype but with initialization will
+ be applied with datatype automatically based on data storage
+
+   let price=6000;  -->it will be number
+
+   price="xyz";  -->not accepted
+
+*the default value of a variable of any type will be
+ undefined
+   let a:number; 
+   let s:string;
+   let f:boolean;
+   console.log(a,s,f);//undefined undefined undefined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+

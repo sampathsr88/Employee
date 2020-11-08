@@ -1,0 +1,543 @@
+ pipes in angular:
+ -----------------
+ *pipes can be used to transform|convert data into required format
+ *pipes are similar to filters of angularjs
+ *syntax:
+      <varname>|<pipename>:options
+
+ *angular is providing so many builtin pipes
+  1.uppercasepipe--it will convert string into uppercase
+  2.lowercasepipe--it will   "       "      "  lowercase
+  3.titlecasepipe--it will   "       "      "   propercase,this
+                   is provided with angular4
+      name-ramA liNga pRasad
+
+     name|titlecase -> Rama Linga Prasad
+
+  4.slicepipe--it will provide substring based on start and
+               end index[-1]
+
+       s-abcdef
+         012345
+
+       s|slice:1:4 -->bcd
+
+       s|slice:1   -->bcdef
+
+       s|slice:1:2 -->b
+
+  5.numberpipe[or decimalpipe]--it will round number to specified
+                                fraction size[decimal],default is
+                                3 decimals
+   syntax:
+      <varname>|number:"minintpart.minfracsize-maxfracsize"
+
+     price--10000.657489
+
+     price|number -->10000.657
+
+     price|number:"1.4-4" ->10000.6575
+
+     price|number:"6.0-0" ->010001 
+
+    price   -->presentation---> price
+      |                           |  
+    1000                        01000
+   10000                        10000
+
+  6.currencypipe--it is used to display a number with currency
+                  symbol,default is 2 decimals
+    syntax:
+        <varname>|currency:"currencycode":true|false:"minintpart.minfracsize-maxfracsize"
+                                             or
+                                           string
+
+      currencycode--specify country currency code
+                     eg: USD,INR,CAN,..  [default is USD]
+
+              true--currency symbol [default]
+              false--currency code
+     note:
+       true|false is deprecated in angular5,angular is providing
+       string
+           symbol----currency symbol [same as true]
+           code  ---currency code [same as false]
+          symbol-narrow--narrow currency symbol
+
+     symbol-narrow is useful if the country as got 2 currency symbol
+     representation
+
+          CANADA---> $   -->symbol
+                    CA$  -->symbol-narrow 
+
+ 7.percentpipe--this is used to display percentage
+ 
+       actualprice--40000
+       offerprice --30000
+         discount --25% 
+
+      (offerprice/actualprice)|percent --> 25%
+
+ 8.JsonPipe--it will convert normal object into json object
+
+ 9.AsyncPipe--it will provide asynchronous execution,this is
+              mainly used with ngFor
+              [asynchronous exec is a non blocking exec,it allows
+               more than one execution parallely]
+
+   <tr *ngFor="let c of cateogries|async">
+      ...                             |
+   </tr>                          this makes ngfor exec asynchronous,
+                                  so that control will goto next ngfor
+   <tr *ngFor="let p of prods">
+     ....
+   </tr>
+
+ 10.datepipe--this is used to display date in a required format
+    syntax:
+      <varname>|date:"format"
+
+   format:
+   -------
+     shortDate--->mm/dd/yy
+           d  --- date with single digit
+          dd  --- date with multi digit
+
+       doj--9/15/2020                 9/6/2020
+
+       doj|date:"d"  --> 15             6
+       doj|date:"dd" --> 15            06 
+
+           M  --month with single digit
+          MM  --month with multi digit
+         MMM  --month name with 3 chars[sep]
+        MMMM  --month name completly [september]
+    y or yyyy --year with century[2020]
+          yy  --year without century[20]
+        EEE   --weekday name with 3 chars[tue]
+       EEEE   --weekday name completly[wednesday]
+         hh   --hours
+         mm   --minutes
+         ss   --seconds
+          a   --AM|PM
+
+example:
+--------
+ >ng g c pipesdemo --flat
+*goto pipesdemo.component.ts
+     ...
+ selector:"app-root"
+     ...
+ export class PipesdemoComponent ..
+ {
+   pinfo={"name":"dEll","desc":"dell i7 proc with 8gb ram","aprice":50000.45628,"oprice":40000.76758,"dom":new Date()};
+//new Date will provide system date and time
+
+*goto pipesdemo.component.html
+ <div style="font-size:x-large;margin:12px">
+    name: {{pinfo.name|lowercase}} , {{pinfo.name|uppercase}} <br>
+    desc: {{pinfo.desc|titlecase}} <br>
+  aprice: {{pinfo.aprice|currency:"INR":"symbol"}} <br>
+  oprice: {{pinfo.oprice|number:"1.4-4"}} <br>
+discount(%):{{(pinfo.oprice/pinfo.aprice)|percent}} <br>
+  dom   : {{pinfo.dom|date:"EEE MMMM dd/MM/y hh:mm:ss a"|lowercase}}
+    </div>
+
+*set PipesdemoComponent as bootstrap
+  >ng s -o
+   ...
+
+
+  discount calc: ((pinfo.aprice-pinfo.oprice)/pinfo.aprice)|percent
+
+
+
+ note:
+ -----
+ *angular supports chain  of pipes,one pipe output can be given to
+  another[applying more than one pipe to a variable]
+
+     dom-->datepipe-->lowercasepipe
+ *date pipe can display time with 24hr format using HH
+         HH:mm:ss-->24 hrs format
+
+ *check the difference between symbol and symbol-narrow with
+  currency code CAD[canada]
+
+   aprice: {{pinfo.aprice|currency:"CAD":"symbol-narrow"}} <br>
+
+
+   aprice: {{pinfo.aprice|currency:"CAD":"symbol"}} <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,225 @@
+angular versions:
+-----------------
+*angular is provided by google in the year 2015 as
+ beta version
+*angular2 stable release--2016,sep
+ ->it is developed using typescript1.8 
+ ->it is focused on component based architecture to
+   simplify complex ui[similar to reactjs]
+
+*angular4--2017,mar
+ ->it is developed using typescript2.2
+ ->it is provided with titlecase pipe
+      name-raMa linGa pRasad
+
+    name|uppercase-->RAMA LINGA PRASAD
+    name|lowercase-->rama linga prasad
+             |
+        this pipes are available with angular2
+
+    name|titlecase-->Rama Linga Prasad
+           |
+      new in angular4
+ ->ngif directive is provided with else option
+     eg:
+      <span *ngIf="n%2==0; then template1
+                           else template2">
+      </span>                |
+                           else option is new in ang4
+ note:
+  angular3 is skipped due to angular/router versioning
+  problem
+
+   angular2----> angular/core2.0 node package
+                 angular/router2.0  "  "
+                         |
+                     changes
+                         |
+                angular/router3.0
+
+   angular4--->angular/core4.0
+               angular/router4.0 
+*angular5---2017,nov
+  ->it is developed using typescript2.3
+  ->validations are supported based on blur and submit,
+    earlier only change option is supported
+
+   mobile---validations.pattern("[0-9]{10}")
+
+   mobile--9    -->modified|edited[change option]
+                                     |
+                                  validate mobile
+
+  mobile-9878976543 -->loosing focus[blur option]
+                                      |
+                                    validate
+
+   username-aa
+   password-bb
+   mobile-88888
+       ...
+    register[submit button]-->click[submit option]
+                                     |
+                                 all the validations
+                                 will be done
+ ->Httpclient service is provided as an alternative to
+   Http service to work with ajax
+          HttpClient service is simple,light weight
+ and more powerful compare to http service[of angular4]
+*angular6--2018,may
+  ->it is developed using typescript2.8
+  ->it supports root level dependency injection
+      syntax:
+        @Injectable({
+           providedIn:'root' -->new in angular6
+                   })
+        export class inventoryservice--->object
+         {}
+             project                    
+                |
+  addproductcomponent
+         |
+  constructor(_inventoryservice -->angular will
+              :inventoryservice)   inject object
+   {}
+  save(){
+   this._inventoryservice.
+            addproduct()
+        }
+  displaycomponent
+       |
+  constructor(_inventoryservice  -->angular will
+              :inventoryservice)    inject object 
+   {}
+
+
+  @NgModule({
+     providers:[inventoryservice],
+     declarations:[c1,c2,..]
+          })
+  export class module1
+   {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+                      
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+ 
+ 

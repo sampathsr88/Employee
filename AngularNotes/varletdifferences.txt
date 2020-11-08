@@ -1,0 +1,247 @@
+ var vs let:
+ -----------
+ 1.var is provided with es1
+   let is provided with es6
+
+ 2.var is a function scoped
+   let is a block scoped
+      example:
+      --------
+        ->goto vs code and open es folder
+        ->goto explorer window,click on new file button
+               varletdiff1.js
+                    |
+            for(var i=1;i<=10;i++)
+{//for loop block
+    console.log(i);
+}
+//out side for loop block
+console.log("outside for loop block:"+i);//i-11
+
+for(let j=1;j<=10;j++)
+{//one more for loop block
+    console.log(j);
+}
+//out side for loop block
+console.log("outside for loop block:"+j);//error--j is not defined
+        ->goto view menu and select terminal
+             >node varletdiff1.js
+                 ...
+ 3.var will break block scope prinicple,this leads to
+   global polluting problem[i.e memory leakage]
+   
+   let will not break block scope principle,this will
+   avoid global polluting problem[or memory leakage]
+   
+   note:
+   -----
+    block level variable available at global level
+    [outside block] is called "global polluting problem
+                              or memory leakage"
+
+   example:
+   --------
+       ->goto explorer and click on new file
+              varletdiff2.js
+                  |
+          function f1()
+          {
+    var a=100;
+    let b=200;
+    //creating a block inside function
+    {
+        var c=300;
+        let d=400;
+    }
+    console.log(a);//100
+    console.log(b);//200
+    console.log(c);//300
+    console.log(d);//error d is not defined
+
+       }
+     f1();//calling func
+     ->goto terminal
+        >node varletdiff2.js
+              ....
+  4.var allows variable redeclaration
+    let doesn't allow variable redeclaration
+      ->click on new file
+          varletdiff3.js
+               |
+          var a=100;
+console.log(a);
+var a=200;//redeclaring a variable
+console.log(a);//200
+
+let b=400;
+console.log(b);//400
+let b=600;
+console.log(b);//error
+       ->goto terminal
+            >node varletdiff3.js
+                 ...
+   5.var will have  "variable hoisting problem"
+     let will not have "variable hoisting problem"
+      note:
+        using a variable and declaring later is called
+        "variable hoisting"
+
+      exmple:
+          ->click on new file
+              varletdiff4.js
+                   |
+        console.log(a);//undefined
+          var a=100;
+
+      console.log(b);//error
+        let b=200;
+          ->goto terminal
+             >node varletdiff4.ts
+                   ...
+
+ conclusion:
+ -----------
+ it is recommended to go with "let" keyword
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

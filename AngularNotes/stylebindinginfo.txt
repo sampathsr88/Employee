@@ -1,0 +1,22 @@
+ style binding:
+ --------------
+ *binding component variable to stylesheet characteristic is called
+  "style binding"
+ *syntax:
+   <tagname [style.characteristic]="varname">
+
+  <h2 style="color:blue">
+           |
+     normal styling[static]
+
+
+  component class------->  programming
+                         textcolor variable
+                                |
+                         red   or  blue
+
+   template--> <h2 [style.color]="textcolor">
+                                     |
+                                red or blue
+                    |
+                style binding[dynamic]

@@ -1,0 +1,509 @@
+ module in typescript:
+ ---------------------
+  <>.ts[developer1]                            <>.ts[developer2]
+    |                                             |
+  export const restapiurl="http://..";     import{restapiurl,f1,c1} from "./filename";
+  export function f1(){..}                       f1();
+  export class c1{..}                          let obj=new c1();
+
+   ..                                         <>.ts
+   [module]                                     |
+                                           import { ... } from "./filename";
+                                           ...
+                                             [module]
+
+*A module is a collection of variables,methods,classes and interfaces
+*Module provides reusability by applying export keyword to
+ variable|method|class|interface accross other ts files
+*Each ts file in typescript is a module
+*syntax:
+    namespace <namespacename>
+    {
+      export <varname>|<methodname>|<classname>|<interfacename>
+            ...
+    }
+ *namespace is a logical container to group related members in
+  a structured way to avoid naming collision
+ *members applied with export will be accessible to other ts file
+  [only export members will be available to other modules]
+ *modules can be classified into 2 types
+   1.internal module
+          namespace is mandatory for internal module,this module
+          can be referenced into another module using
+          reference tag
+      syntax:
+    file1.ts                           app.ts
+      |                                  | 
+   namespace ns1                    ///<reference path="file1.ts"/>
+   {
+     export function f1()              ns1.f1();
+     { .. }
+   } 
+
+   2.external module
+          namespace is not mandatory for external module,this
+          module export members can be referenced using import
+          keyword  
+     syntax:
+       import{namespacename (or) members} from "./filename";
+            namespacename.methodname()
+
+ *module referenced using reference tag is called "internal module"
+ *module referenced using import keyword is called "external module"
+
+example for internal module:
+----------------------------
+  file1.ts                                 app.ts
+     |                                   reference file1.ts and file2.ts
+  namespace ns1                             ns1.f1()
+     |                                      ns2.f1()
+   f1()
+
+  file2.ts
+     |
+  namespace ns2
+     |
+    f1()
+
+
+*goto vs code and open typescript folder
+*create new file
+   file1.ts
+     |
+ namespace ns1{
+    export function f1(){
+        console.log("func f1 of ns1");
+    }
+  }
+
+*create new file
+   file2.ts
+     |
+ namespace ns2{
+    export function f1(){
+        console.log("func f1 of ns2");
+    }
+   }
+*create a new file
+  app.ts
+    |
+ /// <reference path="file1.ts" />
+/// <reference path="file2.ts" />
+
+ns1.f1();
+ns2.f1();
+
+ *goto terminal
+
+  >tsc app.ts --outFile "outputfile.js"
+ it will place app.ts compiled js code into outputfile.js,this option is
+ mandatory to the ts file referencing internal module
+
+  >node outputfile
+    ...
+
+example for external module:
+----------------------------
+  module1.ts                       module1client.ts
+     |                                 |
+ namespace inventory           import ... from "./module1";        
+     category class
+     product class
+
+*create a new file
+  module1.ts
+      |
+ export namespace inventory
+ {
+    export class category
+    {
+        constructor(private cateid:string,private catename:string){}
+        display(){
+            console.log(this.cateid,this.catename);
+        }
+    }
+    export class product
+    {
+        constructor(private prodid:string,private prodname:string){}
+    display(){
+        console.log(this.prodid,this.prodname);
+    }
+
+    }
+}
+*create a new file
+  module1client.ts
+       |
+ import {inventory} from "./module1";
+//create objects
+let cobj=new inventory.category("c001","mobiles");
+let pobj=new inventory.product("p001","samsung");
+cobj.display();
+pobj.display();
+
+*goto terminal
+ >tsc module1client.ts
+ >node module1client
+   ..
+
+note:
+----
+*namespace is not mandatory for external module
+   ->goto module1.ts
+     [remove namespace]
+     export class category
+     { .. }
+    export class product
+      { .. }
+
+   ->goto module1client.ts
+     import{category,product} from "./module1";
+     let cobj=new category(--);
+     let pobj=new product(--);
+      ...
+
+    >tsc module1client.ts
+    >node module1client
+        ...
+*imported members can be exported to another module by applying
+ export to imported members
+    ->goto module1client.ts
+      import{category,product} from "./module1";
+          ...
+      export{category,product};
+
+    ->create new file
+      module1clientnext.ts
+            |
+     import {category,product} from "./module1client";
+     let cobj1=new category("c002","laptops");
+     let pobj1=new product("p002","dell");
+      cobj1.display();
+      pobj1.display();
+
+      >tsc module1clientnext.ts
+      >node module1clientnext
+           ..
+
+
+
+
+
+
+
+
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

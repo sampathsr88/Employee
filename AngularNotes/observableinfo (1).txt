@@ -1,0 +1,124 @@
+Observable:
+-----------
+  component                          service[class]
+     |                                  | 
+  getcategories()-------------------->getcategories()
+                  waiting for         {
+                  response               ...
+                  [synchronous]
+                 <--------------------}
+
+   getprods()  ----------------------->getprods()
+                     "                 {..}
+               <-----------------------
+
+                 (or)
+
+   getcategories()------------------->getcategories()
+                    not waiting        { run code async using }
+                     for response         observable
+                    [asynchronus]   
+         ...
+   getprods()------------------------>getprods()
+                                       { .. }
+
+  getcategoriesresponse(data)<------------getcategories method
+                                          providing response to
+                                          callback func
+  getprodsresponse(data)<-----------------getprods method response
+                                                ..
+*observable is a class to run unit of code asynchronously by
+calling callback functions
+*asynchornous communication is non blocking request,client will
+ not be waiting for server response,the followed for stats will
+ be executed,this provides parallel exec[more than one task parallely]
+*callback funcs can be registered with observable using
+ subscribe method
+*syntax:
+   this.<observableobject>.subscribe(
+      (response:type)=>{
+                //success func,which will receive positive data
+                       },
+      (err)=>{
+             //error func,which will receive error info
+             },
+       ()=>{
+            //complete func,which will be executed on completion of
+               request
+           });
+*observable class constructor requires inner function with para as
+ observer,observer will receive address of callback funcs towards
+ 3 methods
+  1.next(data)--it will call success function to provide data
+  2.error(message)--it will call error function to provide error
+                    message
+  3.complete()--it will call complete function
+*once we got required info from observable,it is recommended
+ practice to unsubscribe to release internal memory resources
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
+
+
+
+
+
+
+        
+

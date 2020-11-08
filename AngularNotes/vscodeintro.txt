@@ -1,0 +1,115 @@
+ visual studio code[vs code]
+ ---------------------------
+          [slow and tough]
+    cycle------------------>ameerpet
+        
+         [fast and easy]
+    bike ------------------>ameerpet
+   [kukatpally] 
+
+
+    notepad-------------------->app development
+             
+                 easy and fast
+    IDE[vs code]--------------->   "
+     |
+  Integrated Development Environment
+     |
+  collection of windows and tools
+     |
+  explorer window,editor window with intellisense and
+                   autocompletion,terminal window,
+    error indicator with compiler tool,linting tool,..
+ *there are different IDE's
+      vscode,sublimetext,eclipse,atom,..
+
+ *vs code is an IDE provided by microsoft to develop
+  front end part of web application development
+  [html,javascript,angular,reactjs,..]
+ *vs code is an open source,light weight and cross platfor
+  editor[IDE]
+ *vs code[or an IDE] makes developer job easy and faster
+  by providing intellisense,autocompletion and error indication
+ *installation:
+          code.visualstudio.com
+                 |
+         click on download for windows
+ *this will provide msi setup,run setup to install
+  vs code
+ *goto start menu-->programs-->visual studio code
+                                 |
+                                ....
+                     manage
+                       |
+                   settings-->select color theme
+                                  |
+                               dark visual studio[default]
+                           select light visual studio
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+                  
+
+
+
+
+
+
+
+
+

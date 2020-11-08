@@ -1,0 +1,249 @@
+TDF[Template Driven Form] validations
+--------------------------------------
+*validations applied directly to the controls present with in
+ template are called TDF validations
+*TDF validations are based on HTML5 validations,this will use
+ html5 attributes to apply validations to controls
+ 1.required
+ 2.pattern
+ 3.minlength
+ 4.maxlength
+*syntax:
+  <form #formgroupname="ngForm"
+     [ngFormOptions]="{updateOn:'change|blur|submit'}">
+   <input name=".." [(ngModel)]="varname" required|pattern|..
+     [ngModelOptions]="{updateOn:'..'}>
+   <span *ngIf="formgroupname.controls.propname.invalid">
+      error message
+   </span>
+      ...
+  </form>
+
+ ->ngForm keyword will create a FormGroup internally,the reference
+   is #formgroupname
+ ->control name will be considered as FormControl property
+   internally,it is recommended to provide control name same
+   as varname set with ngModel
+ ->FormGroup and FormControl properties will be same as MDF
+
+example:
+--------
+*goto vs code and open app1 folder
+ >ng g c tdf --flat
+*goto tdf.component.ts
+    ...
+ selector:"app-root"
+    ...
+ export class TdfComponent ..
+ {
+  firstname:string;
+  lastname:string;
+  info:string;
+
+  register(usermodel1)
+  {//para usermodel1 will receive formgroup from template[button click event]
+    if(usermodel1.valid)
+    this.info=this.firstname+":"+this.lastname;
+  }
+
+*goto tdf.component.html
+<form #usermodel="ngForm">
+    <div style="font-size: x-large;margin:15px">
+        <input name="firstname" [(ngModel)]="firstname" placeholder="firstname" required>
+        <span *ngIf="usermodel.controls.firstname.invalid">
+            enter firstname
+        </span>
+        <br>
+        <input name="lastname" [(ngModel)]="lastname" placeholder="lastname" required>
+        <span *ngIf="usermodel.controls.lastname.invalid && usermodel.controls.lastname.touched">
+            enter lastname
+        </span>
+        <br>
+        <input type="button" value="register" (click)="register(usermodel)">
+        <br>
+        {{info}}
+    </div>
+</form>
+
+*set TdfComponent as bootstrap
+ >ng s -o
+   ...
+
+MDF vs TDF:
+-----------
+1.MDF will apply validations to model props with in component class
+  TDF will apply     "       "   controls     "   "  template
+
+2.MDF will provide programming flexibility
+  [dynamic controls creation with validations 
+   verifying validations in router guard programming]
+ 
+  TDF doesn't provide programming flexibility
+
+3.MDF allows unit testing of validations
+  TDF doesn't allow unit testing of validations
+
+4.MDF is complex
+  TDF is simple[easy to use]
+
+ advantage of MDF over TDF:
+  ->programming flexibility and easy unit testing of validations
+
+ advantage of TDF over MDF:
+  ->easy to use
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+       
+
+
+
+
+
+
+
+
+
+

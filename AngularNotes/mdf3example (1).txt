@@ -1,0 +1,252 @@
+ FormArray class
+ ---------------
+ *this is used to create an array of formcontrols (or) formgroups
+  (or) formarrays
+ *the main importance of formarray is dynamic controls creation
+ *requirement:
+       cartmodel[formgroup]
+          |
+  custname--formcontrol 
+  address --formcontrol
+  prods   --formarray[array of formgroups] 
+
+ design:
+   custname: textbox
+   address : textarea
+
+    AddProduct button[click]
+          |
+   prodid  prodname   prodprice
+   textbox  textbox    textbox    delete button
+   
+   textbox  textbox    textbox    delete button
+     save button
+
+example:
+--------
+  >ng g c mdf3 --flat
+*goto mdf3.component.ts
+    ...
+import{FormGroup,FormControl,FormArray,Validators} from "@angular/forms";
+    ...
+ selector:"app-root"
+    ...
+export class Mdf3Component ..
+{
+cartmodel:FormGroup;
+  custinfo:string;
+  prodinfo:string;
+
+  newprod():FormGroup
+  {
+    return new FormGroup({
+prodid:new FormControl("",[Validators.required]),
+prodname:new FormControl("",[Validators.required]),
+prodprice:new FormControl("",[Validators.required])
+    });
+ }
+
+  constructor() 
+  {//build cartmodel
+    this.cartmodel=new FormGroup({
+      custname:new FormControl("",[Validators.required]),
+      address:new FormControl("",[Validators.required]),
+      prods:new FormArray([this.newprod()])
+    });
+  }
+addproduct()
+{
+  (<FormArray>this.cartmodel.get("prods")).push(this.newprod());
+  //get("prods") will return abstractcontrol class,this should be typecasted to formarray type,this will provide access to push method of formarray class to add new element[formgroup] into formarray
+}
+deleteproduct(index:number)
+{
+  (<FormArray>this.cartmodel.get("prods")).removeAt(index);//it will remove formgroup[prod info] from formarray[prods]
+}
+save()
+{
+  this.custinfo=this.cartmodel.value.custname+":"+this.cartmodel.value.address;
+  this.prodinfo="";
+  for(let p of this.cartmodel.value.prods)
+  {
+   this.prodinfo=this.prodinfo+p.prodid+"  "+p.prodname+"  "+p.prodprice+"<br>"; 
+  }
+}
+*goto mdf3.component.html
+ <form [formGroup]="cartmodel">
+    <div style="font-size:x-large;margin:7px">
+ custname:<input formControlName="custname"> <br>
+  address:<br>
+    <textarea rows=5 cols=20 formControlName="address"></textarea>
+    <br>
+    <input type="button" value="AddProduct" (click)="addproduct()">
+    <hr>
+    <table border="1" style="font-size: x-large;margin:10px">
+        <tr>
+            <th>prodid</th>
+            <th>name</th>
+            <th>price</th>
+            <th>option</th>
+        </tr>
+        <ng-container formArrayName="prods">
+            <tr *ngFor="let p of cartmodel.get('prods').value;let i=index" [formGroupName]="i">
+                <td>
+                    <input formControlName="prodid">
+                </td>
+                <td>
+                    <input formControlName="prodname">
+                </td>
+                <td>
+                    <input formControlName="prodprice">
+                </td>
+                <td>
+                    <input type="button" value="delete" (click)="deleteproduct(i)">
+                </td>
+            </tr>
+        </ng-container>
+    </table>
+    <br>
+    <input type="button" value="save" (click)="save()">
+    <br>
+    {{custinfo}} <br>
+    <span [innerHtml]="prodinfo"></span>
+    </div>
+</form>
+*set Mdf3Component as bootstrap
+ >ng s -o
+   ...
+
+ note:
+ -----
+ *initially prods formarray will have only one formgroup,so ngfor will
+  create only one table row with textboxes
+ *when user clicks on addproduct button,new formgroup will be added to
+  prods formarray,so ngfor will create a new table row with textboxes
+ *the data entered into textboxes will be stored into formgroups present
+  in prods formarray
+                                prods formarray
+         table                     formgroup [0]
+
+   p001   aaa 1000 ------------->p001 aaa 1000
+                                 formgroup [1]           
+
+   p002   bbb 2000 ------------->p002 bbb 2000
+
+ *when user clicks on delete button,formgroup element will be removed
+  from prods formarray based on index,according table row will be removed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

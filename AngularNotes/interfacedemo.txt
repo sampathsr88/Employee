@@ -1,0 +1,248 @@
+ interface:
+ ----------
+ *interface is a contract to set of classes,which provides standards|rules to be
+  followed by classes
+
+   interface                              customer class
+      |                                       |
+  constr variable                      constr="user id;.."      
+   add()                                add(){adding customer}
+   remove()                                   ..
+
+    ..                                    product class           
+                                              |
+ [rules|standards]                          constr=".."
+                                        add(){adding product}
+                                        remove(){ .. }
+ *interface will contain variables and methods without behavior
+  [variable declaration is allowed without initialization
+   methods declaration allowed without logic]
+ *syntax:
+     interface <interfacename>
+     {
+       <varname>:<type>;
+       <methodname>():<type>;
+          ...
+     }
+ *interface doesn't support access specfier,default is public
+ *A class implementing interface should provide functionality to
+  all the methods of the interface
+   syntax:
+      class <classname> implements <interfacename>
+      {
+            <methodname>():<type>
+            { .. }
+              ...
+      }
+  *A class can extend only one class but can implement more than
+   one interface
+     syntax:
+        class <classname> extends <classname>
+                          implements <interface1>,<interface2>,..
+        {
+              ...
+        }
+  *interface object cannot be created,but interface variable can
+   reference an object of the class
+
+              Idraw interface
+                  |
+                area()-->standard
+                  |
+    circle class     rectangle class
+       |                  |
+     area()            area()
+   {pi*r*r}            {l*b}
+
+ example:
+ --------
+ *goto vs code and open typescript folder
+ *create new file
+   interfacedemo.ts
+        |
+  interface Idraw
+{
+    area():number;
+}
+//create classes
+class circle implements Idraw
+{
+    constructor(private radius:number)
+    {}
+    area():number{
+        let res=3.14*this.radius*this.radius;
+        return res;
+    }
+}
+class rect implements Idraw
+{
+    constructor(private l:number,private b:number)
+    {}
+    area():number{
+        let res=this.l*this.b;
+        return res;
+    }
+}
+//create objects
+let c=new circle(10);
+console.log("area of circle:"+c.area());
+
+let r=new rect(20,30);
+console.log("area of rect:"+r.area());
+
+//interface referencing class object
+let draw:Idraw;
+draw=new circle(15);
+console.log("area of circle:"+draw.area());
+
+draw=new rect(10,15);
+console.log("area of rect:"+draw.area());
+
+ *goto terminal
+  >tsc interfacedemo.ts
+  >node interfacedemo
+      ...
+
+ note:
+ ----
+ class implementing interface will consume very less memory resources
+ compare to class extending another class
+        interface supports multi inheritance[implementing more than one
+                                               interface]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+                                        

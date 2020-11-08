@@ -1,0 +1,118 @@
+ intro to bootstrap:
+ -------------------
+ *bootstrap is an open source css framework to develop responsive webpages
+ *webpage rendering content based on device is called responsive page
+
+     desktop|laptop                     webpage[responsive]
+                   --------------------> div1 div2 div3
+    div1 div2 div2 
+
+     tablet       -------------------->
+   div1 div2
+     div3
+
+     mobile      --------------------->
+     div1
+     div2
+     div3
+
+ *bootstrap is provided by twitter
+ *bootstrap is providing so many builtin css classes to apply
+  formatting to html for rich user interaction,this css classes
+  comes with bootstrap.min.css
+  1.btn --it will provide button shape
+  2.btn-primary--it will apply backcolor as blue
+  3.btn-success--      "                    green
+  4.img-circle --it will provide circle shape to html element
+  5.container--it will align html element to center
+  6.panel   --it will display html element as a panel with
+              heading and body
+  7.modal   --it will display html element as modal dialog,this
+              requires javascript code[bootstrap.min.js
+                                        and jquery.js]
+       ...
+
+ *bootstrap can be integrated into angular project in 2 ways
+   1.using node package
+       >npm i bootstrap@3.3.2
+     [node_modules-->bootstrap-->dist-->..->bootstrap.min.css]
+
+   2.using CDN[Content Delivery Network] link
+        this will download bootstrap into client system from
+        some internet location,this will reduce production
+        bundle size
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

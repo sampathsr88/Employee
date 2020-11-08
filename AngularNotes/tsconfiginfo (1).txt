@@ -1,0 +1,989 @@
+ typescript configuration file[tsconfig.json]
+ --------------------------------------------
+
+   tsc file1.ts --target es5 --sourceMap --removeComments 
+
+   tsc file2.ts --target es5 --sourceMap --removeComments
+        ...
+                             |
+                  repetition of options
+                      this can be avoided by creating
+                  typescript configuration file
+
+
+  file1.ts            ------->tsc-->it will compile all the file
+  file2.ts                          by applying options from
+    ...                             tsconfig.json
+  tsconfig.json
+      |
+   target-es5
+   removecomments-true
+      ..
+*typescript configuration file will provide instructions to typescript
+ compiler to compile all the files present in current folder and
+ sub folders
+*typescript configuration filename should be tsconfig.json
+ [json format file]
+  syntax:
+    {
+      "compilerOptions":{
+             "target":"..",
+     "removeComments": .. ,
+     "sourceMap"     : .. ,
+     "outDir"        : .. ,
+     "outFile"       : ...
+                        },
+       "files":[..],
+     "include":[...],
+     "exclude":[..],
+       ...
+    }
+
+ 1.target--specify target ecmascript version,default is es3
+ 2.removecomments--true|false
+      true--ts file comments will not be placed into js file
+      false--           "    will be placed into js file
+
+ 3.sourceMap--true|false
+      true--map file will be generated
+      false-map file will not be generated[default]
+ 4.outDir--specify output dir name for js files
+
+     dir1
+       |
+     file1.ts,file2.ts,.. -->tsc-->file1.js,file2.js,..
+                                        |
+                                   place into dist folder[output dir]
+ 5.outFile--specify js file name to bundle all the ts files compiled
+            code[all the ts files compiled code will be placed into
+                  single js file]
+
+     file1.ts
+     file2.ts   ->tsc[outFile-bundle.ts]-----> bundle.js
+      ...                                         ...
+  
+    this bundling makes page loading faster
+
+   browser                         webserver
+         --------------------------->webpage
+            <----------------------><script src="file1.js">
+            <----------------------><script src="file2.js">
+                  |
+          2 communications to download
+            2 js files                          |
+                                     <script src="bundle.js">
+            <------------------------->
+             single communication to
+              download 2 files content
+              as one js file
+                   |
+            page loading will be faster
+ 6.files--specify filenames to be compiled,it doesn't support wild card
+          chars[i.e *]
+ 7.include--specify filenames and folders to be compiled,it supports
+            wildcard chars
+
+       eg: dir1/* -->all the files present in dir1
+           dir1/**/* -->all the files and folders
+                | 
+            it will refer to all the sub folders and files
+
+ 8.exclude--specify filenames and folders to be excluded from
+            compilation,it supports wildcard chars
+                this acts like a filter to include option
+ example:
+ --------
+ *goto command window
+    e:\angularbatch29>md tsconfigdemo
+                     >cd tsconfigdemo
+                     >code .
+ [it will open vs code with tsconfigdemo folder]
+ *create new file
+  file1.ts
+  //file1 library code
+console.log("file1 code");
+
+ *create new file
+   file2.ts
+ //file2 library code
+console.log("file2 code");
+
+ *create new file
+   file3.ts
+      |
+ //file3 library code
+console.log("file3 code");
+
+ *click on new folder button and create a folder with the name dir1
+ *rc on dir1 and select new file
+     file4.ts
+        |
+  //file4 library code
+console.log("file4 code");
+
+ *create new file into dir1
+    file5.ts
+      |
+ //file5 library code
+console.log("file5 code");
+
+ *create new file into dir1
+    file6.ts
+       |
+  //file6 library code
+console.log("file6 code");
+
+*create new file into tsconfigdemo folder[root level]
+    tsconfig.json
+        |
+  {
+    "compilerOptions": {
+        "target": "ES5",
+        "sourceMap": false,
+        "removeComments": true,
+        "outDir": "dist"
+    }
+}
+
+*goto terminal
+   >tsc
+ it will compile all the ts files,dist folder will be created to place
+ js files
+ [goto explorer-->dist--> ...]
+
+ outfile option:
+ ---------------
+ *bundle all the ts files compiled code into single js file
+    ->goto tsconfig.json
+           ...
+        "outDir":"dist",
+        "outFile":"bundle.js"
+
+    ->goto terminal
+        >tsc
+ *it will place all the ts files compiled code into bundle.js file,this
+  js file can be linked with webpage 
+
+ files option:
+ -------------
+ *compile file2.ts and dir1 folder file4.ts
+    ->goto tsconfig.json
+           ..
+       "compilerOptions":{
+                     ...
+                         },
+       "files": ["file2.ts","dir1/file4.ts"]
+
+      >tsc
+ [it will compile file2.ts and file4.ts and compiled code will be
+  placed into bundle.js]
+
+ include and exclude option:
+ ---------------------------
+ *compile file2.ts and dir1 folder all the files except file5.ts
+     ->goto tsconfig.js
+         ...
+       "files": ["file2.ts","dir1/file4.ts"],
+       "include": ["file2.ts","dir1/*"],
+       "exclude": ["dir1/file5.ts"]
+
+      >tsc
+   [include option files - exclude option files -->compilation
+                                      [file2,file4 and file6]  ]
+
+     files (union) include  (-) exclude
+
+ extends option:
+ ---------------
+              project
+                 |
+             login.ts
+             register.ts
+                ..
+   tsconfiges5.json              tsconfiges6.json            
+       |                              |
+  target:"es5"                    target:"es6"
+  removecomments:true             removecomments:true
+       ..
+
+ *in the above case some options are repeating in typescript
+  configuration files targeting to es5 or es6
+ *this repetition can be avoided by creating a base configuration
+  file,this base configuration can be inherited by other
+  configuration files using "extends" option
+ *extends can be to create new typescript configuration file
+  based on exiting typescript configuration file,this provides
+  reusability
+
+              base.json
+             removecomments-true
+                  ..
+                   |
+  tsconfiges5.json       tsconfiges6.json
+   target-es5               target-es6
+    ..                       ..
+
+example:
+--------
+*goto command window
+   e:\angularbatch29>mkdir tsconfigdemo1
+                    >cd tsconfigdemo1
+                    >code.
+*create new file
+  file1.ts
+ //file1 library code
+ let prodid:string="p001";
+const price:number=4000;
+console.log(prodid,price);
+
+*create new file
+  base.json
+    |
+ {
+    "compilerOption":{
+        "removeComments":true,
+        "sourceMap":false
+    }
+}
+
+*create new file [typescript config targeting to es5]
+   tsconfiges5.json
+       |
+ {
+  "extends":"./base.json",
+  "compilerOptions":{
+      "target":"es5",
+      "outDir":"distes5"
+
+  }
+
+}
+*create new file[typescript config targeting to es6]
+    tsconfiges6.json
+          |
+ {
+  "extends":"./base.json",
+  "compilerOptions":{
+      "target":"es6",
+      "outDir":"distes6"
+
+  }
+}
+*compile project targeting to es5
+  [goto terminal]
+ >tsc -p tsconfiges5.json
+  [it will compile project files targeting to es5 based on
+   tsconfiges5.json options and compiled code will be placed
+   into distes5 folder]
+
+*compile project targeting to es6
+ >tsc -p tsconfiges6.json 
+ [it will compile project files targeting to es6 based on
+   tsconfiges6.json options and compiled code will be placed
+   into distes6 folder]
+
+*goto explorer
+       |
+  distes5 folder->file1.js---> var prodid="..";
+                               var price=..;
+
+   ->es5 doesn't support let and const,so let and const present in
+     ts file is converted to var
+
+  distes6 folder->file1.js--> let prodid="..";
+                              const price=..;
+
+note:
+----
+ typescript configuration file name can be other than tsconfig.json,
+ this time we need to provide filename explicilty to tsc by
+ using -p[path] option
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                              ..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+                                       
+
+
+
+
+
+
+
+
+
+
+
+                                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             
+ 

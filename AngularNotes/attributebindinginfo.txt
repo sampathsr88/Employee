@@ -1,0 +1,33 @@
+ attribute binding:
+ ------------------
+ *binding component variable to html element attribute is called
+  "attribute binding"
+ *syntax:
+   <tagname [attr.attributename]="varname">
+
+ *attribute binding is required when html element attribute is
+ not having corresponding DOM object property
+
+                                     browser dom  
+   td  -----------------------------td object
+    colspan attribute                 no colspan property
+
+  <td [colspan]="varname">  -->property binding [not accepted]
+
+  <td [attr.colspan]="varname"> -->attribute binding [accepted]
+
+ *property binding provides better performance over atttribute binding
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

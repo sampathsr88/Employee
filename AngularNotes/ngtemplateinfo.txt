@@ -1,0 +1,126 @@
+ ng-template directive:
+ ----------------------
+ *this is used to create reusable design[UI] with in a component
+ *syntax:
+    <ng-template #templatename>
+        reusable design code -->10 lines
+    </ng-template>
+ *template name should be prefixed with # symbol
+ *template can be referenced|called in 2 ways
+  1.using *ngTemplateOutlet directive
+  2.using *ngIf directive 
+
+ * *ngTemplateOutlet directive can be used to call template
+   from normal html tag (or) ng-container 
+
+  syntax:
+    <tagname  *ngTemplateOutlet="templatename">
+    </tagname> 
+example:
+--------
+  >ng g c ngtemplatedemo --flat
+*goto ngtemplatedemo.component.ts
+    ...
+  selector:"app-root"
+    ...
+ export class NgtemplatedemoComponent ..
+ {
+   prodname:string="dell";
+    ...
+ }
+*goto ngtemplatedemo.component.html
+  <!--create reusable design template-->
+<ng-template #prodinfo>
+    <div style="font-size:x-large;border:3px solid black;margin:20px;width:30%">
+        prodid:p001 <br>
+        name  :{{prodname}} <br>
+          pic : <br>
+          <img src="../images/dell.jpg" height="120" width="120"> 
+    </div>
+</ng-template>
+<h2>display some info</h2>
+<!--callling template-->
+<span *ngTemplateOutlet="prodinfo"></span>
+<h2>display sone info</h2>
+<!--callling template-->
+<ng-container *ngTemplateOutlet="prodinfo"></ng-container>
+
+*set ngtemplatedemocomponent as bootstrap
+  >ng s -o
+    ..
+
+ note:
+ -----
+ 1.ng-template is used to create reusable template design with in
+   a component
+
+ 2. *ngTemplateOutlet is used to call a template
+
+ 3. ng-container is a non rendering tag|container provided by
+    angular,this will not have corresponding browser dom object,this
+    provides better performance compare to normal html tag
+         whenever there is a requirement of dummy tag then go
+    with ng-container
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

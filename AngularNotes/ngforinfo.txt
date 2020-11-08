@@ -1,0 +1,121 @@
+ *ngFor directive:
+ -----------------
+ *this is used to read a collection[array] in a sequential order
+ *it is similar to ng-repeat of angularjs
+ *syntax:
+    <tagname *ngFor="let varname of collectionname;
+                     let indexvar=index;
+                     let evenvar=even;
+                     let oddvar=odd;
+                     let firstvar=first;
+                     let lastvar=last;
+                         ...">
+          ...
+    </tagname>
+
+ *ngFor will create  html template[tag] dynamically towards
+  each element present with in a collection|array
+ *ngfor directive is providing set of keywords[options]
+  1.index--it will provide index number of an element,it will
+            start with 0
+
+     sno  pid   ...
+      1                     <td>{{i+1}}</td>
+      2
+
+  2.even--it will provide true|false
+          true--even index element
+
+  3.odd--it will provide true|false
+          true--odd index lement
+
+  4.first--it will provide true|false
+           true--first index element
+
+  5.last--it will provide true|false
+           true--last index element
+
+example:
+--------
+  >ng g c ngfor --flat
+
+*goto ngfor.component.ts
+    ...
+ selector:"app-root"
+    ...
+ export class NgforComponent ..
+ {
+   courses:string[]=["angular","react","nodejs","denojs"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

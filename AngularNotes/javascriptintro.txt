@@ -1,0 +1,207 @@
+ intro to javascript[ecma script]
+ --------------------------------
+ *javascript is a powerful scripting language to develop
+  dynamic|interactive webpages
+ *javascript is provided by breden eich in the year
+  1995 with netscape2.0
+ *bredan eich and other companies as formed a group
+  ECMA[European Computer Manufacturer Association] to
+  provide standards|guidelines to scripting languages
+ *ECMA script is providing standards|guidelines to
+  scripting languages
+             ECMA standards
+                   |
+  javascript     jscript      actionscript 
+    |              |               |
+  netscape       microsoft    macromedia [flash]
+   or
+  sun micro
+ *javascript1.3 is based on ES1[Ecma Script]
+    ...
+ *javascript1.8 is based on ES5
+ *javascript1.9 is based on ES6[or ES2015]
+      ->let and const keywords for variable declaration
+      ->arrow function
+      ->object oriented programming support
+        [classes,static,inheritance,..]
+ *the current version of ecma is ES11[or ES2020]
+      ->bigint datatype
+      ->private variable|method declaration is supported
+        by providing # symbol
+
+       class product
+       {
+         prodid;  -->public field [variable]
+
+        #prodid;  -->private field
+           ...
+       }
+ 
+  ecma---->javascript------>jquery [javascript library]
+                              |
+                            builtin javascript funcs
+ *javascript is a interpreter based language,it will
+  perform line by line exec,if any error occured
+  program exec will be terminated
+       line1-->exec success
+       line2-->exec failed[error]--->termination
+       line3
+ *javascript is case sensitive
+ *javascript can be used for client side and server side
+      client side-->javascript will run in the browser
+      server side-->javascript will run in webserver
+                    system,nodejs can run javascript
+                    on the server system
+ *javascript is used to develop libraries and frameworks
+    eg:
+      jquery,reactjs,..-->javascript libraries
+          angularjs    -->javascript framework
+        angular        -->typescript framework
+                          [extension to javascript]
+ *javascript file extension is js
+ *javascript file can be executed in 2 ways
+   1.using browser
+   2.using node engine[node.exe]--this is used to run
+                                 javascript from command window
+    syntax:
+      >node <filename>.js
+ *node engine comes with nodejs installation
+      www.nodejs.org
+             |
+      click on 12.18.3 button
+             |
+    it will provide setup file
+ *run setup file to install nodejs
+ *this installation will provide node engine and
+  npm[node package manager] tool
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

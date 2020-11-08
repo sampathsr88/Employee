@@ -1,0 +1,153 @@
+ typescript:
+ -----------
+ *typescript is a typed superset of javascript that
+  compiles[transpiles] to plain javascript
+ *typed means typescript provides type safety by
+  supporting datatypes,this will provides comilation
+  erros before running code,if developer does any mistake
+  in terms of assigning data
+    
+      prodname:string;
+        ...
+      prodname=6000; -->error
+ *superset means extending javascript by providing
+  datatypes,access specifiers,interface,..
+
+   typescript=javascript + [datatypes,access specfiers,..]
+ *the things valid in javascript are valid in typescript
+  [let,const,arrow func,callbacks,restpara,..]
+ *typescript is provided by microsoft in the year 2012
+  with version typescript0.8,the current version is
+  3.9[4.0 beta]
+ *google as used typescript1.8 to develop
+  angular2 framework in the year 2015
+ *typescript provides programming feel of c# and java
+ *typescript program file extension is ts
+ *typescript compiler is tsc.exe
+ *typescript is not understandable to browser,it shuld be
+  transpiled[or compiled] into javascript using
+  typescript compiler
+
+  <>.cs     ---> csc    ------> IL code -->  CLR
+ [c# prog]    [compiler]                   [runtime]
+
+ <>.java   ---> javac  -------> byte code --> JVM
+                                             [runtime]
+
+ <>.ts     ---> tsc   -->  javascript code[.js]-- node engine|browser
+[typescript                         |                            |
+  program]                      webpage---------------------------
+   
+    c#,java,typescript-->high level languages
+
+    IL code,byte,javascript-->middle level languages
+
+*high level languages are developer firnedly
+*typescript compiler can be installed using node package
+    goto command window
+           |
+   >npm install typescript -g
+   >tsc -v
+
+*steps to work with typescript
+ 1.creating typescript program [ts file]
+ 2.compile typescript program using tsc
+ 3.run js file using node command
+    (or) attach js file to webpage to run with browser
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

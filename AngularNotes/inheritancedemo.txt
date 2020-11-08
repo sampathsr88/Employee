@@ -1,0 +1,464 @@
+ inheritance in typescript:
+ --------------------------
+ *creating a new class based on existing class is called
+  "inheritance"
+                person class [base|super class]
+                   |
+                 name
+                 age
+                   |
+          -----------------------
+          |                      |
+       customer class          employee class [derv|sub class]
+         custid                  empid
+          ...                      ..
+ *inheritance provides reusability
+ *inheritance comes in 2 ways
+   1.IS a relation [mostly]
+       eg:
+        customer IS a person
+        employee IS a person
+   2.AS a relation [containment]
+      eg:
+       employee as dept  ->employee class will have dept class var|object
+       customer as card
+         ..
+ *inheritance can be classified into 5 types
+   1.single level
+            c1
+             |
+            c2
+   2.multi level
+            c1
+            |
+            c2
+            |
+            c3
+   3.hierarchical
+            c1
+            |
+    c2            c3
+    |
+c4    c5          ...
+
+  4.multiple inheritance
+          c1  c2
+             |
+            c3
+  5.hybrid inheritance
+              c1
+
+           c2    c3  ->multiple + multilevel
+
+              c4
+ *typescript allows only one base class to derv class
+  [single level,multi level and hierarchical]
+ *typescript is providing "extends" keyword to work with
+  inheritance
+   syntax:
+      class <dervclassname> extends <baseclassname>
+      {
+         ...
+       constructor(--)
+       {
+          super(--);
+           ...
+       }
+       <methodname>(--)
+       {
+          super.<methodname>(--);
+       }
+      }
+  *derv class can reference base class with the help of
+   "super" keyword
+
+ method overriding:
+ ------------------
+ *derv class redeclaring base class method with same
+  signature[numb of parameters] is called "method overriding"
+       (or)
+ *derv class method name and signature same as base class
+  method is called "method overriding"
+ *method overriding doesn't provide base class method access to
+  derv class object 
+
+ *typescript doesn't support method overloading,but supports
+  method overriding
+           person class
+              |
+             ...
+            display()
+              |
+          customer class
+             ...
+            display()-->method overriding
+
+ note:
+   method overloading can be achieved indirectly using optional
+   parameter
+             employee class
+                 |
+              incr(amt=2000)[allowed]------->    incr(){sal+2000}  [not allowed]
+                   |                           incr(amt){sal+amt}  
+
+                eobj.incr()-->accepted
+                eobj.incr(3000)-->accepted 
+example:
+--------
+*create new file 
+   inheritancedemo.ts
+        |
+  //base class
+class person
+{
+    constructor(private name:string,private age:number)
+    {
+       
+    }
+    display(){
+        console.log(this.name,this.age);
+    }
+}
+//derv class
+class customer extends person
+{ private custid:string;
+    constructor(name:string,age:number,custid:string){
+        super(name,age);//initializing base class object
+        this.custid=custid;
+        }
+        display()
+        {
+            console.log(this.custid);
+            super.display();//calling base method to display name and age
+        }
+}
+//create derv class object
+let cobj=new customer("charan",20,"c001");//internally it will create an object of base and derv class
+cobj.display();//calling derv class[customer] method
+
+ >tsc inheritancedemo.ts
+ >node inheritancedemo
+    ....
+
+ note:
+ -----
+ *constructor parameters attached with access specifier will
+  declare class fields with parameter names and assigning
+  paras data to class fields will be done automatically,this
+  makes developer job easy[coding will be reduced]
+
+  class person                        class person
+  {                                   {
+  constructor(private name:string, ->  private name:string;
+           private age:number)         private age:number;
+    {}                                 constructor(name:string,age)
+                                       {
+  }                                    this.name=name;
+                                       this.age=age;
+                                       }
+                                     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+                 
+ 

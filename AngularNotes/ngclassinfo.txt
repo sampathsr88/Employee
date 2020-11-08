@@ -1,0 +1,326 @@
+ ngClass directive:
+ ------------------
+ *this is used to apply css class to html element
+ *syntax:
+   <tagname [ngClass]="varname">
+                          |
+  this component variable should contain css class name
+
+
+  <span class="c1">
+          |
+   normal css [static]
+
+
+ component--> cssclassname var
+                      |
+                  c1 or c2 dynamically
+
+  <span [ngClass]="cssclassname">
+                     |
+                 dynamic 
+
+example:
+--------
+*goto ngstyle.component.ts
+    ...
+ export class ngstyle.component.ts
+ {
+ a:number=0;
+b:number=0;
+res:number=0;
+//create a stylesheet
+//mystyle={"color":"","visibility":"hidden"};
+cssclassname:string="default";
+
+sum()
+{
+ this.res=this.a+this.b;
+ //this.mystyle={"color":"blue","visibility":"visible"}; 
+ this.cssclassname="c1";
+}
+
+mult()
+{
+ this.res=this.a*this.b;
+ //this.mystyle={"color":"red","visibility":"visible"}; 
+ this.cssclassname="c2";
+}
+
+*goto ngstyle.component.html
+ <style>
+  .default{
+      visibility: hidden;
+  }
+  .c1{
+      color:green;
+      visibility: visible;
+  }
+  .c2{
+      color:bisque;
+      visibility: visible;
+  }
+
+
+</style>
+<div ..>
+  ..
+<span [ngClass]="cssclassname" ..</span>
+</div>
+
+*goto browser
+  ...
+
+note:
+-----
+*ngClass directive is deprecated in angular4,the alternative is
+ class directive
+       ->goto ngstyle.component.html
+                ...
+         <span [class]="cssclassname">..</span>
+
+*ngclass or class directive allows applying more than one css class
+    cssclassname="c1  c2";
+
+ <tagname [class]="cssclassname">
+*class directive allows applying css class based on condition[true|false],
+ this is not supported by ngclass directive
+   
+   flag-->true|false
+
+  <tagname [class.classname]="flag">
+
+       true--css class will be applied
+       false--css class will not be applied
+
+ eg:
+
+  checkbox--apply css              h2--peers info
+       |                              |
+  [(ngModel)]="flag"              [class.c1]="flag"
+
+>ng g c ngclass --flat
+
+*goto ngclass.component.ts
+    ..
+ selector:"app-root"
+   ...
+ export class NgclassComponent ..
+ {
+  flag:boolean=false;
+
+*goto ngclass.component.html
+ <style>
+    .c1{
+        background-color: black;
+        color:white;
+        border:3px solid yellow;
+        width:25%;
+        margin:20px;
+    }
+</style>
+<input type="checkbox" [(ngModel)]="flag">
+
+<br>
+<br>
+<h2 [class.c1]="flag">PEERS INFO</h2>
+
+*set NgclassComponent as boootstrap
+
+ >ng s -o
+   ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

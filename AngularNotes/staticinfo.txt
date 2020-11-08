@@ -1,0 +1,41 @@
+ static keyword[access modifier]
+ -------------------------------
+ *static can be applied to 2 things:
+  1.static field
+     ->the field attached to a class is called static field
+     ->the memory will be allocated only once,it will be shared by
+       all the objects of a class
+              emp class-->empno,ename
+                           count-static field
+
+          object1                      emp class
+             |                           |
+         empno,ename                  count-1+1         
+
+         object2
+            |
+         empno,ename
+     ->static field is accessible only with the class name
+
+  2.static method
+      ->the method attached to a class is called "static method"
+      ->this method can access only static data
+      ->static method is accessible only with the class name
+
+     non static method---> non static field and static field
+
+        static method ---> only static field
+
+
+
+
+
+
+
+
+
+
+
+
+
+

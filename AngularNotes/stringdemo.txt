@@ -1,0 +1,135 @@
+string interpolation:
+---------------------
+*string content can be stored into a variable in 3 ways:
+ 1.using double quote [ " ]
+    eg:
+     name="rlp";
+ 2.using single quote [ ' ]
+    eg:
+     name='rlp'; //this is recommended,consumes less memory
+
+ 3.using back tick [ ` ]
+       this is used for multi line string
+    eg:
+      address=`plotno:666,
+               xyz street,
+                hyd`; 
+*mixing a variable with string content using an
+ expression ${} is called "string interpolation"
+*string interpolation will avoid concatenation,this
+ makes string more readable,this is mostly used to
+ frame complex queries
+*string interpolation is introduced with es6
+
+example:
+--------
+*goto visual studio code and open es folder[e:\angularbatch29]
+*goto explorer and click on new file button
+      stringdemo.js
+          |
+ let name='rlp';
+let address=`plotno:866,
+ v.v.nagar,kukatpally,
+ hyderabad
+             `;
+let tblname='usersinfo';
+let uname='rlp';
+let pwd='charan';
+let query=`select count(*) from ${tblname} where username='${uname}' and password='${pwd}'`;
+console.log(name);
+console.log(address);
+console.log(query);
+*goto terminal
+  >node stringdemo
+        ...
+
+note:
+-----
+string interpolation requires back tick [ ` ]
+
+  let query="select count(*) from "+tblname+" where
+   username=' "+uname+" name password=' " +pwd;
+        |
+   framing query with concatenation
+
+  let query=`select count(*) from ${tblname} where username='${uname}' and password='${pwd}'`;
+         |
+  framing query without concatenation using string interpolation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,297 @@
+ custom validations
+ ------------------
+ *developer writting code[logic] to perform a validation specific
+  to an application is called "custom validation"
+ *custom validations are going to application specific
+ *custom validations logic should be placed into static methods
+  of a class
+  syntax:
+    export class <classname>
+    {
+      static <methodname>(para:FormControl|FormGroup)
+      {
+           write code to perform validation
+           if(..)
+            return({methodname:true}); //invalid data
+           else
+            return null;  //valid data
+      }
+      ...
+   }
+
+   ->para should be formcontrol if validation is based on
+     single property
+      eg: checking username availability
+
+  ->para should be formgroup if validation is based on
+    more than one property
+     eg: confirmpassword should be same as password
+
+example:
+--------
+*goto vs code and open app1 folder
+*create a class for custom validations
+ >ng g class validations
+*goto validations.ts
+ import{FormControl,FormGroup} from "@angular/forms";
+export class Validations
+{
+  static isvailable(fc:FormControl)
+  {//validation is based on single property username,check the availability of username for registration
+    if(fc.value=="raju" || fc.value=="balu")
+    return({isavailable:true});//invalid
+    else
+    return null;
+  }
+static comparepwds(fg:FormGroup)
+{//fg will provide access to password and confirmpassword props
+    if(fg.value.confirmpassword==fg.value.password)
+    return null;
+    else
+    return({comparepwds:true});
+}
+}
+*create a component
+ >ng g c mdf4 --flat
+*goto mdf4.component.ts
+   ...
+ import{FormControl,FormGroup,Validators} from "@angular/forms";
+ import{Validations} from "./validations";
+    ...
+ selector:"app-root"
+    ...
+ export class Mdf4Component implements OnInit 
+{
+  usermodel:FormGroup;
+  info:string;
+
+
+  constructor()
+   { 
+     this.usermodel=new FormGroup({
+       username:new FormControl("",[Validators.required,Validations.isvailable]),
+       password:new FormControl(""),
+       confirmpassword:new FormControl("")
+     },{validators:Validations.comparepwds});
+   }
+  register()
+   {
+     if(this.usermodel.valid)
+     this.info=this.usermodel.value.username+":"+this.usermodel.value.password;
+   }
+*goto mdf4.component.html
+<form [formGroup]="usermodel">
+    <div style="font-size:x-large;margin:20px">
+        <input formControlName="username" placeholder="username">
+        <span *ngIf="usermodel.controls.username.hasError('required')">
+            enter username
+        </span>
+        <span *ngIf="usermodel.controls.username.hasError('isvailable')">
+            username not available..pls try another
+        </span>
+        <br>
+        <input formControlName="password" placeholder="password">
+        <br>
+        <input formControlName="confirmpassword" placeholder="confirmpassword">
+        <span *ngIf="usermodel.hasError('comparepwds') && usermodel.controls.confirmpassword.touched">
+            password mismatch..
+        </span>
+       <br>
+       <input type="button" value="register" (click)="register()">
+       <br>
+       {{info}}
+    </div>
+</form>
+*set Mdf4Component as bootstrap
+ >ng s -o
+   ...
+
+
+ note:
+ -----
+ *custom validation logic method will be executed based on updateon
+  option[change|blur|submit]
+ *usermodel.hasError method should be considered if validation method
+  is based on more than one property
+ *assignment:
+     skillset--listbox  --->write custom validation logic to
+                            ask the user to select minimum 2 skillsets
+
+    skillsetcount method--->fc.value-->mvc,angular,react
+                 
+                           s=fc.value.split(",")
+                                       |
+                                  string array
+                                       |
+                                 mvc | angular | react
+
+                            if(s.length<2)
+                                ...
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

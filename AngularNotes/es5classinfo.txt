@@ -1,0 +1,110 @@
+ class in javascript:
+ --------------------
+ *class can be used to combine related fields[variables]
+  and methods as one unit
+ *class variables|fields will not occupy memory
+ *object is a physical representation of data[variables]
+  based on class
+ *object can be created using "new" operator|keyword
+   syntax:
+     let <objectvarname>=new <classname>(--)
+ 
+   class is a logical representation
+   object is a physical representation based on class
+ *es5 allows class creation using "function" keyword,
+  class keyword is not available in es5
+  syntax:
+  function <classname>(para1,para2,..)-->constructor paras
+  {
+    this.fieldname=para1;
+         ...
+    this.<methodname>=function(para1,..)
+                      { .. }
+         or
+    this.<methodname>=(para1,..)=>{
+                                 .. }
+     ...
+   }
+  ->class fields and methods can be declared using
+    "this" keyword
+  ->method can be normal|arrow function
+example:
+--------
+*click on new file button
+    es5classdemo.js
+         |
+  function courseinfo(facname,coursename)
+{
+    this.facname1=facname;
+    this.coursename1=coursename;
+    //methods
+    this.changecourse=function(newcourse){
+        this.coursename1=newcourse;
+    }
+    this.display=()=>{
+         console.log(this.facname1+" will take "+this.coursename1);
+    }
+}
+//create an object
+let obj=new courseinfo("rlp","angular10");
+obj.display();
+obj.changecourse("reactjs");
+obj.display();
+
+*goto terminal
+   >node es5classdemo
+         ...
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

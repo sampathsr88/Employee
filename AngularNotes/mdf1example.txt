@@ -1,0 +1,303 @@
+ create usermodel to accept firstname,lastname and emailid by
+ applying validations using MDF
+ ------------------------------------------------------------
+ *goto terminal
+  >ng g c mdf1 --flat
+
+ *goto mdf1.component.ts
+    ...
+  import{FormGroup,FormControl,Validators} from "@angular/forms";
+    ...
+  selector:"app-root"
+    ...
+  export class Mdf1Component ..
+  {
+   usermodel:FormGroup;
+  info:string;
+  constructor()
+   {//build model
+    this.usermodel=new FormGroup({
+      firstname:new FormControl("",[Validators.required]),
+      lastname:new FormControl("",[Validators.required]),
+      emailid:new FormControl("xyz@gmail.com",[Validators.email])
+    },
+    {updateOn:'change'}
+       );
+   }
+   register()
+   {
+     if(this.usermodel.valid)
+     //store user info into db by calling restapi
+     this.info=this.usermodel.value.firstname+":"+this.usermodel.value.lastname+":"+this.usermodel.value.emailid;
+   }
+
+*goto src folder and select styles.css  span{
+    font-size:large;
+    color:red;
+  }
+ 
+
+*goto mdf1.component.html
+ <form [formGroup]="usermodel" (ngSubmit)="register()">
+    <div style="font-size:x-large;margin:20px">
+firstname:<input formControlName="firstname"> 
+<span *ngIf="usermodel.controls.firstname.invalid">enter firstname</span>
+  <br>
+lastname:<input formControlName="lastname">
+<span *ngIf="usermodel.controls.lastname.invalid && usermodel.controls.lastname.touched">
+    enter lastname
+</span>
+<br>
+emailid:<input formControlName="emailid">
+<span *ngIf="usermodel.controls.emailid.invalid">enter valid emailid..</span>
+<br>
+<input type="submit" value="register">
+<br>
+{{info}} <br>
+{{usermodel.value|json}}
+    </div>
+</form>
+*goto app.module.ts
+   ...
+ import{ReactiveFormsModule} from "@angular/forms";
+   ...
+ @NgModule({
+     ...
+   imports:[..,ReactiveFormsModule],
+   bootstrap:[Mdf1Component]
+     })
+  ...
+
+ >ng s -o
+    ...
+
+note:
+-----
+*property applied with required validation with initial value
+ blank will show error message because invalid will be true,this
+ can be avoided using touched property along with invalid
+
+*updateOn will specify when the control data to be updated to
+ model property
+  1.change[default]--editing control will update to model property
+                     and validation will take place
+
+  2.blur--control loosing focus will update to model property ..
+
+  3.submit--submit button click will update all the controls data to
+             model properties and validations will take place
+*blur and submit are provided with angular5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

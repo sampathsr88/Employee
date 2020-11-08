@@ -1,0 +1,263 @@
+component:
+----------
+*component is a view[or class] to provide user interaction to accept data
+ (or) displaying data
+*eg:
+   HomeComponent,AboutComponent,LoginComponent,..
+*component will combine data,methods[logic],markup and styles
+ as one unit
+
+           LoginComponent
+                 |
+   username [data]              <div> [markup]
+   password                  <input placeholder="username">
+                                   ..
+                             </div>
+
+  authenticate()[logic]      div{   [styles]
+  {            
+                    ...
+    verify user acct            }
+  }
+
+*component architecture will simplify complex ui,this provides
+ reusability,easy maintenance,unit testing will be easy,..
+
+*A typescript class applied with component decorator will be
+ considered as a component
+*syntax:
+   @Component({
+      selector:"..",
+      template:`...`,
+   templateUrl:"...",
+     styles   :[..],
+   styleUrls  :[...],
+           ..
+              })
+  export class <classname>
+   { fields
+       +
+     methods[logic]
+   }
+
+ 1.selector-specify tagname[selector name] to a component,this
+            can be used to reference a component from markup
+
+  headercomponent                          homecomponent
+      |                                        |
+ selector-"app-header"                     template
+ template-<h2>                              <app-header></app-header>         
+          way 2 success..                   <h2>welcome to ..</h2>
+         </h2>
+
+                                          AboutComponent
+                                               |
+                                            template
+                                          <app-header></app-header>
+                                            <h2>profile..</h2>
+  ->selector name can be anything,default comes with app-componentname
+  ->component creation is nothing but creating a custom tag
+
+ 2.template--specify inline markup to a component,this will place
+             markup into ts file along with component class
+             declaration
+
+ 3.templateUrl--specify html file path to a component,this file
+                will contain component markup,this will seperate
+                component markup[design part] from ts into html file
+
+    template vs templateUrl
+    ------------------------
+    ->template will not provide intellisense and autocompletion
+      templateurl will provide    "            "   "
+
+    ->template will place markup and logic into a single file[ts],
+      it doesn't support parallel development of design part and
+      logic part
+
+      templateUrl will seperate design part code[markup] from ts file
+      into html file,this allows parallel development of
+      design part and logic part
+
+    developer1                      developer2
+        |                               |
+   login.component.ts             login.component.html
+        |                               |
+       fields                          markup
+       methods
+  conclusion:
+    ->small amt of masrkup then go with template,otherwise
+      go with templateurl
+ 
+  4.styles--it allows attaching inline styles to a component
+
+  5.stylesUrls--it allows attaching css files to a component
+
+    styles vs stylesUrls:
+    ---------------------
+    i.styles will be unique to a component
+      styleurls css files can be attached to different components
+
+   ii.styles doesn't provide intellisense and autocommpletion
+      styleurls css file will provide "     "   "
+
+  iii.styles will support normal css format
+      styleUrls will support css,scss,sass,less and stylus format file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

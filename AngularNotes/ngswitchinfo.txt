@@ -1,0 +1,161 @@
+ ngswitch directive:
+ -------------------
+ *this is used to implement switch case with html[markup]
+ *syntax:
+  <tagname [ngSwitch]="varname">
+    <tagname *ngSwitchCase="value1">...</tagname>
+          ....
+    <tagname *ngSwitchDefault>...</tagname>
+  </tagname>
+
+ example:
+ --------
+  >ng g c ngswitch --flat
+ *goto ngswitch.component.ts
+     ...
+  selector:"app-root"
+     ...
+ export class NgswitchComponent ..
+ {
+   coursename:string="";
+     ...
+ }
+
+ *goto ngswitch.component.html
+ <select [(ngModel)]="coursename">
+    <option value="">-select course-</option>
+    <option>angular</option>
+    <option>reactjs</option>
+    <option>nodejs</option>
+</select>
+<br>
+<div style="font-size:x-large;margin:15px" [ngSwitch]="coursename">
+    <ul *ngSwitchCase="'angular'">
+        <li>databindings</li>
+        <li>directives</li>
+        <li>routing</li>
+        <li>jwt security</li>
+    </ul>
+    <ul *ngSwitchCase="'reactjs'">
+        <li>virtual dom</li>
+        <li>function vs class components</li>
+        <li>axois</li>
+        <li>redux</li>
+    </ul>
+    <ul *ngSwitchCase="'nodejs'">
+        <li>packages</li>
+        <li>http server</li>
+        <li>expressjs</li>
+        <li>sockets</li>
+    </ul>
+    <h3 *ngSwitchDefault>select course name to get details..</h3>
+</div>
+*set NgswitchComponent as a bootstrap
+
+ >ng s -o
+   ..
+
+ note:
+ ----
+ *dropdownlist will show initial option based on option value
+  matching with ngmodel variable
+ *user selected option will be assigned to coursename variable
+  by ngmodel
+ *whenever coursename variable value changes,angular will exec
+  ngswitch directive and corresponding ngswitchcase content
+  [ul] will be loaded into browser dom for presentation
+
+                 ngmodel
+  select angular----------->coursename----->ngswitch="coursename"
+                                               |
+                                       ngswitchcase="'angular'"
+               <------------------------ <li>..</li>
+   *databindings
+       ..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+  

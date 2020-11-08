@@ -1,0 +1,606 @@
+ validations in angular:
+ -----------------------
+ *verifying user input to accept proper data is called a "validation"
+ *eg:
+   username cannot be blank
+   password requires 6-8 chars
+   mobile should be 10 digit
+       ...
+
+ *angular is providing builtin support to perform different
+  types of validations,this makes developer job easy and faster
+ *angular supports 2 types of validations
+  1.MDF[Model Driven Form] validations
+  2.TDF[Template Driven Form] validations
+
+ component class                                template[html]
+     |                                              |     
+  usermodel[formgroup                           <input type="text"
+        |                                         [(ngModel)]=".."
+ firstname prop-inital,validation[s]              validation[s]>
+    ...
+       |                                              |
+  validations applied to                       validations applied
+  model props with in                          to a control with in
+  component class                               a template
+      |                                               |
+  MDF validation                                     TDF
+
+ MDF validations:
+ ----------------
+ *validations applied to model properties with in a component
+  class is called MDF validations
+ *MDF will seperate validations from html,this provides programming
+  flexibility and unit testing validations will be easy
+ *programming flexibility means creating controls dynamically by
+  applying validations is possible and component validations can
+  be verified with in router guard
+ *angular is providing ReactiveFormsModule with @angular/forms
+  package with set of classes to work with MDF validations
+  [MDF validations is also called as Reactive Form validations]
+  1.FormControl class--this is used to declare a model property to
+                       set or get from control data by applying
+                       validation[s]
+
+ username:string="raju"---------------------<input [(ngModel)]="username">
+
+ username:new FormControl("raju",
+             [validators.required,..]        <input formControlName="username">
+
+ 2.FormGroup class--this is used to build a model with collection of
+                    formcontrol properties,this will maintain model validation state
+                    and properties data in the form of key|value pairs
+
+ 3.FormArray class--this is used to create an array of formcontrols (or)
+                    formgroups (or) nested formarray
+
+      ->FormGroup will serialize into an object
+        FormArray will serialize into an array
+
+      ->FormGroup doesn't support dynamic controls creation
+        FormArray supports dynamic controls creation
+
+         AddProduct button[click]
+                  |
+            pid        name        price
+          textbox     textbox     textbox     remove
+
+            "          "            "
+     [dynamic controls creation]
+
+ 4.Validators class--this is providing static methods to apply
+                     validations to formcontrol properties
+    i.required--it will verify whether input is provided or not,this
+                can be applied to mandatory fields
+   ii.minlength(n)--specify minimum number of chars
+  iii.maxlength(n)--specify maximum number of chars
+   iv.email       --it will verify emailid
+    v.pattern     --it will verify user input against an expression
+        syntax:
+           Validators.pattern(expression)
+
+         expression:
+            [0-9]{10}--expression to accept a number with 10 digit
+            [0-9]{1,5}--expression to acccept a number between
+                        1 to 5 digit
+          [A-Za-z.\\s]{1,}--expression to accept a string with
+                            alphabets[lower|upper],dot and space
+                            between 1 to any
+             ... 
+
+ FormControl,FormGroup and FormArray properties and methods:
+ -----------------------------------------------------------
+*this 3 classes are inherited from AbstractControl class,so most of the
+ properties will be common[same]
+
+ 1.valid--it will return true|false
+          true--validation[s] is success [valid data]
+
+ 2.invalid--it will return true|false
+           true--validation[s] is not success [invalid data]
+
+ 3.touched--it will return true|false
+            true--focus to control
+
+ 4.untouched--it will return true|false
+             true--no focus to control
+
+ 5.pristine--it will return true|false
+             true--control is not edited
+
+ 6.dirty   --it will return true|false
+             true--control is edited
+ 7.value   --it will provide an object with properties data
+      eg:
+          usermodel.value.username--it provide username property data
+
+ 8.hasError('validationname')--it will return true|false
+             true--validation is not success
+    eg:
+
+    usermodel-->username---required
+                           pattern
+
+   <span *ngIf="usermodel.controls.username.hasError('required')">
+             enter username
+   <span>
+   <span *ngIf="usermodel.controls.username.hasError('pattern')">
+             enter proper username
+   <span>
+
+
+  <span *ngIf="usermodel.controls.username.invalid">
+          error message common to both the validations
+  </span>
+
+        mobile--pattern  --invalid is developer friendly
+
+ steps to work with MDF validations:
+ -----------------------------------
+ 1.create a model using FormGroup class with in a component
+   syntax:
+   this.<formgroupname>=new FormGroup({
+ property1:new FormControl(initialvalue,[Validators.methodname,..]),
+      ...
+                     },
+   {updateOn:'change|blur|submit'})
+
+ 2.bind formgroup to form tag with in template 
+   syntax:
+    <form [formGroup]="formgroupname">
+   <input formControlName="property1" ..>
+          ...
+    </form>
+
+ 3.import ReactiveFormsModule into AppModule
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

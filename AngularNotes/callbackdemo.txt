@@ -1,0 +1,110 @@
+ callback in javascript:
+ -----------------------
+ *providing one function as a parameter to another func
+  is called "callback"
+ *callback provides 2 way communication between
+  client app and server app
+
+  client app                     server app
+      |                             |
+  getprods(getresponse)---------->getprods(funcptr)
+      ...                          {
+                                    ...
+   getresponse(data)<--------------  funcptr(data)
+    {                   callback   }
+     ...
+    }   
+  *callbacks are required in server based communication
+   with asynchronous implementation    
+   [asynchronous means not blocking the request,further
+    code will be executed,this provides parallel exec]
+example:
+--------
+*goto vs code and open es folder
+*click on new file button
+   callbackdemo.js
+        |
+ //server method[restapi method]
+function dbconnect(funcptr)
+{ //getting data from database
+    let data="prods info from database";
+   funcptr(data);
+}
+
+//client method,callback with normal anonymous func
+dbconnect(function(data){
+    console.log(data);
+}); 
+//client method,callback with arrow anonymous func
+dbconnect((data)=>{
+console.log(data);
+});
+//client method,callback with named func
+function getresponse(data){
+    console.log(data);
+}
+dbconnect(getresponse);
+*goto terminal
+   >node callbackdemo
+        ..
+note:
+-----
+*the main importance of arrow function is callback,this
+ will simplify developer job compare to normal func
+*arrow func doen't allow object creation
+ [till es5 a class can be created using function keyword,
+  in this case arrow function cannot be used ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

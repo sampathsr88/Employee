@@ -1,0 +1,267 @@
+ intro web technology[development]
+ ---------------------------------
+ *web development can be classified into 2 parts
+  1.frontend part
+  2.backend part
+
+ end----->browser--------------->webserver----------->database
+ user                              |
+                                 website
+                 <--------------asp.net,jsp|struts,
+          html,                nodejs with express,php,..
+        css,javascript,        [ backend part]
+        jquery,angularjs,            80%
+        reactjs,angular,
+        vue,..  
+        [frontend part] 
+          20%
+*the importance is given to frontend web development to
+ reduce burden on webserver,this leads to faster response
+ and better performance 
+
+ end ----->browser            webserver------------->database
+ user    angular app---------->rest api[class]       sqlserver
+            or                  methods               mongodb
+         react app             [20% of exec]         
+         [80% of exec]
+*angular or react application execution will be completly
+ in the browser
+        
+      browser
+         |
+    angular app
+         |
+     mainpage
+   home about contact ..[links]
+          |                 |  
+        info            it will display info
+                        from angular app running in
+                        browser without sending request
+                        to server
+
+*frontend frameworks|libraries:
+   
+          jquery--->2006
+        angularjs--->2010  [javascript framework]-->google
+        reactjs  --->2013  [javascript  library]-->facebook
+
+         angular --->2015[beta]
+                     2016[stable release]-->typescript-->google
+                                            framework
+
+     angularjs-->mvc based architecture [complex architecture]
+
+     reactjs--->component based architecture
+
+     angular--->component based architecture
+*the main importance of component based architecture is
+ complex ui can be simplified
+ [reusability,easy maintenance,..]
+*there are 3 stacks development in the realtime
+  1.MEAN stack
+
+     M--Mongodb
+     E--Express
+     A--angular
+     N--Nodejs
+
+  2.MERN stack
+
+     M--Mongodb
+     E--Express
+     R--Reactjs
+     N--Nodejs
+
+  3.MEVN
+
+     M--Mongodb
+     E--Expressjs
+     V--Vuejs
+     N--Nodejs
+
+Angular course Agenda:
+----------------------
+1.intro to angular and versions
+2.Ecma Script 6 [javascript6]
+3.typescript[typed superset of javascript]
+
+    asp.net--------->c# language
+     jsp   --------->java language
+    angular--------->typescript
+4.working with angular[basics,databinding,directives,pipes,validations,
+                        observable|promise]
+5.routing[it is used to develop single page app->SPA]
+6.routing with parameters
+    http://../display.aspx?category=mobiles
+                              |
+                           querystring
+                 [routing with parameter is nothing but querystring]
+7.services
+8.dependency injection[DI]
+9.angular animations
+10.angular material
+11.webstorage[session storage and local storage]
+12.router guards
+13.lazy  loading[on demand loading a module is called lazy loading]
+14.ajax[httpclient service]
+15.rest api
+   [creating a dummy restapi using json-server
+    creating a realtime api using webapi--sqlserver
+    creating a realtime api using expressjs--mongodb]
+16.linting in angular
+17.unit testing
+18.packaging and deployment
+19.github
+20.working with email server
+    ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+ directives in angular:
+ ----------------------
+ *angular is providing directives to extend html behavior
+ *angular directives looks like html tag (or) html attribute
+
+   <h2>..</h2>   --> html tag
+
+   <app-root></app-root> -->component directive[looks like html tag]
+
+
+   <font size=".." >
+           |
+        html attribute
+
+   <input [(ngModel)]="price">
+              |
+      attribute directive [looks like html attribute]
+
+
+   <table *ngIf="prods.length>0">
+      ..     |
+   </table>  structural directive
+ *angular directives can be classified into 3 types
+  1.component directive
+          the directive based on component template is called
+          "component directive"
+                 selector name will be considered as a
+          directive name[custom html tag name]
+
+ 2.attribute directive
+         the directive look like html attribute is called
+         "attribute directive"
+                this directives will apply  styling to html
+         element (or) extending behavior of html element
+
+   eg:  ngModel directive
+        ngstyle   "        [style directive]
+        ngClass   "        [class directive]
+        ngSwitch  "
+           ...
+
+ 3.structural directive 
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+ 

@@ -1,0 +1,150 @@
+ *ngIf directive
+ ---------------
+ *this is used to add[show] (or) remove[hide] html element
+  from browser dom based on condition
+
+ *syntax:
+    <tagname *ngIf="true|false">  -> true--tag will be shown
+          info                       false--tag will be hidden
+    </tagname>
+
+     (or)
+
+    <tagname *ngIf="condition; then template1 else template2">
+    <tagname>
+
+    <ng-template #template1>info</ng-template>  -->display for condition
+                                                   satisfied
+    <ng-template #template2>info</ng-template>  -->display for condition
+                                                   failed
+
+ *ngIf with else option is provided with angular4
+
+example:
+-------
+ >ng g c ngif --flat
+
+*goto ngif.component.ts
+   ...
+ selector:"app-root"
+   ...
+ export class NgifComponent ..
+ {
+   flag:boolean=false;
+  n:number=0;
+
+ toggle()
+ {
+   this.flag=!this.flag;
+ }
+
+*goto ngif.component.html
+ <div style="font-size:x-large;margin:10px">
+    enter number:<input type="number" [(ngModel)]="n">
+    <span *ngIf="n%2==0; then template1 else template2"></span>
+     <br>
+    <ng-template #template1>even number</ng-template>
+    <ng-template #template2>odd number</ng-template>
+</div>
+<hr>
+<button (click)="toggle()">
+    {{flag?'hide':'show'}}  prod info
+</button>
+<br>
+<div style="font-size:x-large;border:3px solid black;width:30%;margin:20px;padding:10px" *ngIf="flag">
+    prodid: p001 <br>
+     name :dell <br>
+     pic  : <br>
+     <img src="../images/dell.jpg" height="130" width="130">
+</div>
+
+ >ng s -o
+   ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,163 @@
+ class in typescript:
+ --------------------
+ *class can be used to combine related fields and methods as one unit
+ *syntax:
+    class <classname>
+    {
+     <accessspecifier>  <fieldname>:<type>;
+              ...
+     constructor(..)
+     { ...  }
+
+     <accessspecfier> <methodname>(..):<type>
+      { .. }
+      ...
+    }
+ *typescript is supporting 3 access specifiers
+  1.private--field|method will be accessible only with in a class
+  2.protected--field|method will be accessible with in a class and
+               derived class
+  3.public--field|method will be accessible in all the places
+            [class or derived class or object variable]
+ *default access specifier is public
+ *default return type is void
+
+example:
+--------
+*goto vs code and open typescript folder
+*create new file
+  classdemo.ts
+     |
+ class calc
+{
+    private a:number;
+    private b:number;
+    private res:number;
+    constructor(a1:number,b1:number){
+        this.a=a1;
+        this.b=b1;
+    }
+    sum():number{
+        this.res=this.a+this.b;
+        return this.res;
+    }
+    mult():number{
+        this.res=this.a*this.b;
+        return this.res;
+    }
+}
+//create an object
+let obj:calc=new calc(30,40); //or let obj=new calc(30,40);
+console.log("sum:"+obj.sum()+" mult:"+obj.mult());
+*goto terminal
+  >tsc classdemo.ts
+  >node classdemo
+     ..
+
+ note:
+ -----
+ *typescript compiler by default will target to es3 version
+ *target option can be used to change default javascript version
+  with typescript compiler
+    syntax:
+         tsc <filename>.ts -t[target]  es6|es5|..
+
+   >tsc classdemo.ts -t es6
+      ....
+ *goto explorer and select classdemo.js
+        ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

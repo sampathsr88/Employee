@@ -1,0 +1,607 @@
+ collections in typescript:
+ --------------------------
+ *typescript supports 4 types of collections
+   1.Map collection
+   2.Set   "
+   3.WeakMap "
+   4.WeakSet "
+ *this collections are supported with es6
+
+ Map collection:
+ ---------------
+ *Map is a collection of key|value pairs
+ *key and value can be of any type,key should be unique
+ *syntax:
+   let <mapvarname>=new Map();
+
+ methods:
+ --------
+ 1.set(key,value)--it will add|modify map collection element
+ 2.get(key)      --it will return element value based on key
+ 3.delete(key)   --it will delete element based on key
+ 4.has(key)      --it will return true|false
+                     true--key is existing
+                     false--key is not existing
+ 5.keys          --it will return all the keys
+ 6.values        --it will return all the values
+ 7.entries       --it will return key and value pairs
+ 6.size          --it will return collection length
+    ..
+example:
+--------
+*goto tsconfigdemo1 folder
+*create a new file
+  mapdemo.ts
+     |
+ let map=new Map();
+map.set(1,"angular");
+map.set(2,"reactjs");
+map.set(3,"vuejs");
+console.log(map);
+console.log(map.get(1));//angular
+map.set(1,"angular10");//not an error,it will modify
+console.log(map.get(1));
+map.delete(3);
+console.log(map.has(3));//false
+//reading keys
+for(let key of map.keys())
+{
+    console.log(key);
+}
+//reading key and value pairs
+for(let[key,value] of map.entries())
+{
+    console.log(key,value);
+}
+*goto terminal
+  >tsc mapdemo.ts -t es6
+  >node mapdemo
+      ...
+
+WeakMap class
+-------------
+*weakmap is a collection of key|value pairs same as Map collection,but
+ it allows key only as an object
+*setting key object to null will remove element from weakmap collection
+ automatically
+
+   user1={name:"aaa"}   msgs=["hi","hello"]
+   user2={name:"bbb"}   msgs=["fine",".."]
+
+      weapmap-->    user1  msgs
+                    user2  msgs
+
+    user1=null-->corresponding element will be removed
+                from weakmap
+                       |
+                    user2 msgs
+*syntax:
+   let weakmap=new WeakMap();
+*methods:
+  1.set(key,value)
+  2.get(key)
+  3.delete(key)
+  4.has(key)
+     ...
+example:
+--------
+*create a new file
+   weakmap.ts
+      |
+ let weakmap=new WeakMap();
+let user1={name:"charan"};
+let msgs1=["hi","h r u"];
+
+weakmap.set(user1,msgs1);
+
+let user2={name:"rakesh"};
+let msgs2=["hi","h r u"];
+weakmap.set(user2,msgs2);
+
+console.log(weakmap);
+user2=null;//it will remove element from weakmap collection
+
+
+ >tsc weakmap.ts -t es6
+ >node weakmap
+    ...
+
+*create a new file
+  weakmap.html
+     |
+ <html>
+   <head>
+      <script src="weakmap.js"></script>
+   </head>
+ </html>
+
+*rc on editor area and select open with live server
+*goto inspect-->console tab
+                   |
+                 weakmap
+                    ...
+                  entries:array(1)-->1 element
+
+note:
+-----
+    Map                        WeakMap 
+    ---                        -------
+1.key can be any           1.key should be an object type only
+  type[basic|object
+         type]
+
+2.setting key to null      2.setting key to null will
+  will not remove            remove element from weakmap
+  element from map
+
+Set collection:
+---------------
+*set can be used to maintain collection of unique values
+*it is similar to an array,but doesn't allow duplicate values
+*syntax:
+   let <setobjectvar>=new Set();
+*methods:
+  1.add(value)
+  2.delete(value)
+  3.has(value)
+  4.size
+  5.values()--it will provide set values
+
+example:
+--------
+*create new file
+   setdemo.ts
+      |
+ let set=new Set();
+set.add("hyd");
+set.add("banglore").add("mumbai");//add method will return same set object
+console.log(set);
+set.add("hyd");
+console.log(set);
+for(let c of set.values())
+{
+    console.log(c);
+}
+let arr=Array.from(set);//array.from method will return an array based on set collection,this array can be used for index based reading,index starts with 0
+console.log(arr[0]);//hyd
+
+ >tsc setdemo.ts
+ >node setdemo
+     ...
+
+WeakSet:
+--------
+*weakset is a collection of unique values,it allows values as
+ an objects
+*setting value object to null will remove an element from
+ weakset automatically
+*methods
+ 1.add(object)
+ 2.delete(object)
+    ..
+
+
+  pinfo1={"name":"dell"}
+  pinfo2={"name":"htc"}
+
+
+  Set object set1-->set1.add(pinfo1).add(pinfo2)
+
+                   set1
+                     |
+               name:dell     -->seperate copy of objects are
+               name:htc          maintained
+
+     pinfo1=null;  -->it will not be removed from set object
+
+
+  weakset object wset1-->wset1.add(pinfo1).add(pinfo2)
+
+                    wset1
+                      |
+                  pinfo1 address  -->seperate copy of objects
+                  pinfo2 address     will not be maintained
+
+         pinfo1=null;-->it will remove element from weakset object 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  

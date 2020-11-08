@@ -1,0 +1,322 @@
+ object oriented programming in javascript:
+ ------------------------------------------
+ *object oriented programming is based on following
+  things:
+  1.data encapsulation
+      binding|combining related variables and
+      functions as one unit
+    practicle:
+        class implements data encapsulation 
+  2.data abstraction
+      hiding important|secured data is called
+      data abstraction,showing|exposing only necessary
+      things 
+    practicle:
+        object creation,object will expose only
+        public things,private things will be hidden
+
+   user----->object------>class
+     |         |             |
+  only b       a           private+public 
+  will be      b               a     b
+ visible     [memory]
+  3.inheritance
+        creating new entity[class] based on
+        existing entity is called "inheritance"
+            this provides reusability
+
+  4.polymorphsim-->poly + morphism
+                     |       |
+                   many    forms
+      many forms of a single entity|object is called
+      polymorphism
+        practicle:
+               methodoverloading
+               method overriding
+ *Applying object oriented programming in a better|effecient way in
+  an application development is called SOLID principles
+      S-->Single Responsibility Principle[SRP]
+          *Too Many responsibilities on a single thing[class] can cause
+           problems,the class should be provided with single reposibility
+           related to a paticular task
+          *a module or class should have a very small piece of responsibility            in the entire application,This also reduces number of bugs and            improves development speed and most importantly makes developer’s            life lot easier
+
+
+
+      O-->Open Closed Principle[OCP]
+          *Software entities (classes, modules) should be opened for                      extension, but closed for modification.
+          *This principle suggests that the class should be easily extended            but there is no need to change its core implementations
+          *The OCP states that the behaviors of the system can be extended            without having to modify its existing implementation.
+          *The main benefit of OCP is that it potentially streamlines                   code maintenance and reduces the risk of breaking the existing                 implementation
+          *example:
+        Let’s take an example of bank accounts like regular savings, salary         saving, corporate etc. for different customers. As for each customer         type, there are different rules and different interest rates. The code         below violates OCP principle if the bank introduces a new Account         type. the code to be modified for adding a new account type.
+
+      public class Account
+      {
+       public decimal Interest { get; set; }
+       public decimal Balance { get; set; }
+       // members and function declaration
+      public decimal CalcInterest(string accType)
+      {
+       if (accType == "Regular") // savings
+       {
+           Interest = (Balance * 4) / 100;
+           if (Balance < 1000) Interest -= (Balance * 2) / 100;
+           if (Balance < 50000) Interest += (Balance * 4) / 100;
+        }
+      else if (accType == "Salary") // salary savings
+      {
+         Interest = (Balance * 5) / 100;
+      }
+      
+      }
+
+     We can apply OCP by using interface (or) abstract class when you want to      extend functionality.we will create a new class to each type of
+    acct type customer 
+
+   interface IAccount
+   {
+     // members and function declaration, properties
+      decimal Balance { get; set; }
+      decimal CalcInterest();
+    }
+ 
+   //regular savings account 
+    public class RegularSavingAccount : IAccount
+     {
+       public decimal Balance { get; set; } = 0;
+       public decimal CalcInterest()
+        {
+         decimal Interest = (Balance * 4) / 100;
+         if (Balance < 1000) Interest -= (Balance * 2) / 100;
+         if (Balance < 50000) Interest += (Balance * 4) / 100;
+         return Interest;
+        }
+      }
+ 
+    //Salary savings account 
+  public class SalarySavingAccount : IAccount
+   {
+       public decimal Balance { get; set; } = 0;
+       public decimal CalcInterest()
+      {
+        decimal Interest = (Balance * 5) / 100;
+       return Interest;
+     }
+   }
+  note:
+  -----
+  when we need corporate acct type,we can create a new class by extending        interface without modifying exiting class[no modification] but extension
+ 
+  //Corporate Account
+   public class CorporateAccount : IAccount
+   {
+     public decimal Balance { get; set; } = 0;
+     public decimal CalcInterest()
+     {
+     decimal Interest = (Balance * 3) / 100;
+     return Interest;
+    }
+   }
+ In the above code three new classes are created; regular saving account,  SalarySavingAccount, and CorporateAccount, by extending them from IAccount.
+
+ This solves the problem of modification of class and by extending interface,  we can extend functionality.
+ Above code is implementing both OCP and SRP principle, as each class has  single is doing a single task and we are not modifying class and only doing  an extension.
+ 
+
+    L-->Liskov Substitution Principle[LSP]
+          *base classes must be able to use objects of derived classes without            knowing it.
+          *LSP states that the child class should be perfectly substitutable              for their parent class.base class var should be able to reference              derv class object,it is called UpCasting principle
+
+    I-->Interface Segration Principle[ISP]
+        *class should not be forced to implement methods which it does not              need,and the contracts should be broken down to thin ones
+         [break one interface into different interfaces].
+        *Using ISP, we can create separate interfaces for each operation or            requirement rather than having a single interface with so many methods
+        *example:
+           In below code, ISP is not followed as creditcard process method is            not required by OfflineOrder class but is forced to implement.
+
+         public interface IOrder
+         {
+           void AddToCart();
+           void CreditCardProcess();
+         }
+ 
+        public class OnlineOrder : IOrder
+        {
+          public void AddToCart()
+          {
+            //Do Add to Cart
+          }
+ 
+         public void CreditCardProcess()
+         {
+           //process through credit card
+         }
+        }
+ 
+       public class OfflineOrder : IOrder
+       {
+        public void AddToCart()
+        {
+         //Do Add to Cart
+         }
+ 
+       public void CCProcess()
+       {
+       //Not required for Cash/ offline Order
+         throw new NotImplementedException();
+        }
+       }
+
+    note:
+    -----
+    We can resolve this violation by dividing IOrder Interface.this is
+    is nothing following ISP
+
+    public interface IOrder
+    {
+    void AddToCart();
+    }
+ 
+    public interface IOnlineOrder
+    {
+     void CCProcess();
+    }
+ 
+    public class OnlineOrder : IOrder, IOnlineOrder
+    {
+     public void AddToCart()
+      {
+       //Do Add to Cart
+      }
+    public void CCProcess()
+     {
+    //process through credit card
+     }
+    }
+ 
+   public class OfflineOrder : IOrder
+    {
+     public void AddToCart()
+     {
+      //Do Add to Cart
+     }
+    }
+
+     D-->Dependency Inversion Principle[DIP]
+       *This principle is about dependencies among components.The definition           of DIP is given by Robert C. Martin is as follows:
+       *The principle says that high-level modules should depend on                    abstraction[interfaces],not on the  low-level modules[classes].
+       *In simple words,the principle says that there should not be a tight            coupling among components of software and to avoid that, the                 components should depend on abstraction[interfaces]
+      
+    example:                                interface IDAL----|
+     1.   presentation   business logic    data access<--------
+           layer           layer            layer
+                         [high level]       [low level]
+                            |
+                     do not create dal object
+                      directly,inject through
+                      constructor
+                       constructor
+                      (IDAL idalobj)<-----------inject DAL class object
+                                                [Dependency Inversion
+                                                 Principle]
+     ->the above code makes loosely coupled,allows parallel development
+       of DAL and BLL,one  developer can go with BLL and other one can
+       go with DAL
+      
+    2.below is simple example:
+
+             i1
+             |
+  class c1        class c2
+                  obj=new c1();//tightly coupled
+
+                 constructor(i1 i)//loosly coupled -->DIP
+                 {}
+                 i.methodname();
+                     ..
+
+   interface idraw1-->area();   idraw2-->peri()
+                               |
+                              ISP                 
+    
+   class circle implements idraw1,idraw2-->area(){...}
+                                           peri(){..}
+                     
+
+   class rect implements idraw1-->area(){..}
+    class traingle  "      "   -->(){..}
+
+  idraw obj;
+  obj=new rect()
+   obj.area();  //area of rect       polymorphism
+  obj=new traingle();
+   obj.area(); //area of traingle
+     |
+    LSP
+
+
+
+
+
+
+
+
+
+
+                                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

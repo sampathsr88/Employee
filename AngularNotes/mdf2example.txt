@@ -1,0 +1,130 @@
+ FormBuilder class:
+ ------------------
+ *this is used to create a formgroup with set of properties
+  without using FormControl class
+ *syntax:
+   this.<formgroupname>=this.<formbuilder>.group({
+     property1:["initial",[validations]],
+          ...
+                  });
+ *requirement:
+ username---required and pattern[alphabets,space and dot]
+ password---minimum 6 chars and maximum 10 chars
+ mobile  ---10 digit number
+ gender  ---required [radiobuttons]
+ skillset --required [ listbox--multiple selection]
+ country  --required [ dropdownlist--single selection] 
+ termsaccepted---requiredtrue [checkbox]
+
+*for all the props by default will be updateOn change,only
+ mobile property requires updateon blur 
+
+example:
+--------
+ >ng g c mdf2 --flat
+*goto mdf2.component.ts
+    ..
+ import{FormBuilder,FormGroup,Validators} from "@angular/forms";
+     ..
+  selector:"app-root"
+     ..
+ export class Mdf2Component ..
+ {
+ formbuilder:FormBuilder;
+ jobmodel:FormGroup;
+ info:string;
+   constructor() {
+    this.formbuilder=new FormBuilder();
+    this.jobmodel=this.formbuilder.group({
+      username:["",[Validators.required,Validators.pattern("[A-Za-z.\\s]{1,}")]],
+      password:["",[Validators.minLength(6),Validators.maxLength(10)]],
+      mobile:["",{validators:[Validators.pattern("[0-9]{10}")],updateOn:'blur'}],
+      gender:["",[Validators.required]],
+      skillset:["",[Validators.required]],
+      country:["",[Validators.required]],
+      termsaccepted:[false,[Validators.requiredTrue]]
+    });
+    }
+
+ register()
+    {
+     this.info=this.jobmodel.value.username+":"+this.jobmodel.value.mobile+":"+this.jobmodel.value.gender+":"+this.jobmodel.value.skillset+":"+this.jobmodel.value.country+":"+this.jobmodel.value.termsaccepted;
+    }
+*goto mdf2.component.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

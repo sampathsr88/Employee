@@ -1,0 +1,56 @@
+ working with multiple components:
+ ---------------------------------
+   headercomponent--->inline style[without css]
+                      inline template[without html]
+              |
+   it should come with only ts file
+
+
+   bodycomponent--->css file
+                    html file
+          |
+  it should come with ts,html and css file
+
+ *create headercomponent into app1 project
+    ->goto terminal
+      >ng g c header --inline-template true
+      it will create a headercomponent with inlinestyle applied
+      from angular.json and inlinetemplate applied from component
+      level,it will create only one file[ts file]
+
+ *goto header.component.ts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

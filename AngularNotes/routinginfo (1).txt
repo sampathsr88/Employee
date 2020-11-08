@@ -1,0 +1,638 @@
+routing in angular:
+-------------------
+
+  about link                            routes collection
+      |                                path  component 
+ http://localhost/about------------>    home  homecomponent[route]
+                                        about aboutcomponent
+                                           ..    |
+                    <-----------------------------
+ loading aboutcomponent
+ for presentation
+
+*mapping client requested url path to a component is called
+ routing,this will load component dynamically for presentation
+           or
+*loading one component into a portion of another component
+ dynamically is called routing
+*routing will provide navigation between components with in
+ angular app
+*routing is used to developer Single Page App[SPA]
+*web app with single mainpage and other pages will be loaded
+ as a part of mainpage without reloading|refreshing mainpage is
+ called "SPA"
+   eg: gmail,youtube,..
+*the main advantage of SPA is faster response,this leads to
+ better performance
+*angular is providing set of classes and directives with
+ RouterModule with @angular/router package to work with
+ routing
+  1.Route class--this is used to combine path and component
+                 [path and component combined is called route]
+
+  2.Routes class--this is used to declare collection of routes
+     syntax:
+     const routes:Routes=[
+         {path:"path1",component:componentclassname},
+         {path:"path1",component:componentclassname,
+          children:[
+                    {path:"cpath1",component:..},
+                        ...
+                   ]},
+             ...
+         {path:"",component:..},
+         {path:"**",component:..}
+                        ];
+
+    ->path:"" will be considered for initial presentation with
+      in mainpage
+    ->path:"**" will be considered for invalid path[resource|path not found]
+    ->route with children can be used to provide inner navigation
+    ->routes can be loaded into a module using RouterModule.forRoot
+      method
+       syntax:
+          const routes:Routes=[...];
+          @NgModule({
+                ...,
+          imports:[RouterModule.forRoot(routes)]
+                   })
+             ..
+
+  3.router-outlet directive--this is a container|placeholder with in
+                             mainpage to display route path component info
+
+  4.routerLink directive--this will bind route path to html element[hyperlink],
+                          hyperlink click will provide navigation to path
+                          related component
+                          [it is similar to href]
+    syntax:
+        <a routerLink="pathname">text</a>
+             (or)
+        <a [routerLink]="['pathname',para1value,..]">text</a>
+                                       |
+                         para value to route path,it is similar to
+                         querystring
+
+  5.routerLinkActive directive--this is used to apply css to active link[selected link]
+  6.Router class--this is used to redirect user from one component[route] to
+                  another component[route] programmatically
+     syntax:
+        this._router.navigate(['pathname',para1value,..]);
+
+requirement:
+-----------
+   app1[project]
+     |
+   homecomponent
+   aboutcomponent
+   contactcomponent
+   servicescomponent-------->training        ...
+                             consultancy
+   trainingcomponent
+   consultancycomponent
+   appmodule--------------->routes collection
+
+   maincomponent-----------> home about ..   [navbar with bootstrap css]
+                                router-outlet
+                              footer
+example:
+--------
+*goto vs code and open app1 folder
+  >ng g c home --flat
+  >ng g c about  "
+  >   "   contact "
+  >   "  services "
+  >   "  training "
+  >   " consultancy "
+
+*goto home.component.html
+  <h2>
+ welcome to peers technologies..
+  </h2>
+ *goto about.component.html
+  <h2>
+  peers is established in the year 1998..
+  </h2>
+ *goto contact.component.html
+  <h2>
+  peers technologies,<br>
+  maitrivanam,<br>
+  ameerpet,hyd <br>
+  phno:040-43224364
+  </h2>
+ *goto training.component.html
+  <ul>
+   <li>online training</li>
+   <li>classroom training</li>
+   <li>corporate training</li>
+  </ul>
+*goto consultancy.component.html
+  <h2>display consultancy info</h2>
+*goto services.component.html
+ <div style="float:left;font-size:x-large">
+   <a routerLink="training">Training</a> <br>
+   <a routerLink="consultancy">Consultancy</a>
+ </div>
+ <div style="float:left;font-size:x-large;padding:15px">
+  <router-outlet></router-outlet>
+ </div>
+
+  >ng g c filenotfound --flat
+ *goto filenotfound.component.html
+  <h2>resource not found..</h2>
+
+ *goto app.module.ts to declare routes
+    ...
+  import{Routes,RouterModule} from "@angular/router";
+  //declare routes
+  const routes:Routes=[
+    {path:"home",component:HomeComponent},
+    {path:"about",component:AboutComponent},
+    {path:"contact",component:ContactComponent},
+    {path:"services",component:ServicesComponent,
+  children:[
+    {path:"training",component:TrainingComponent},
+    {path:"consultancy",component:ConsultancyComponent}
+  ]},
+  {path:'',component:HomeComponent},
+  {path:'**',component:FilenotfoundComponent}
+                  ];
+  @NgModule({
+        ...
+   imports:[..,RouterModule.forRoot(routes)]
+             })
+      ...
+
+ *create maincomponent into project
+  >ng g c main --flat
+ *goto main.component.ts
+     ...
+  @component({
+  selector:"app-root",
+     ...,
+  styles:['.c1{background-color:blue!important}']
+            })
+    ...
+ *goto main.component.html
+  <h2>stepping into peers is a way to success...</h2>
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a routerLink="home" routerLinkActive="active c1">Home</a>
+        </li>
+        <li>
+            <a routerLink="about" routerLinkActive="active c1">About</a>
+        </li>
+        <li>
+            <a routerLink="contact" routerLinkActive="active c1">Contact</a>
+        </li>
+        <li>
+            <a routerLink="services" routerLinkActive="active c1">Services</a>
+        </li>
+    </ul>
+</nav>
+<hr>
+<router-outlet></router-outlet>
+<h3 class="navbar-fixed-bottom">
+    copyrights&copy; reserved to angularbatch29
+</h3>
+
+ *set MainComponent as bootstrap
+
+  >ng s -o
+    ..
+
+note:
+-----
+1.when user clicks on hyperlink,angular routing will verify
+  hyperlink routerlink path with routes collection,if the match is
+  found then path related component will be loaded into
+  maincomponent router-outlet for presentation
+
+2.html5 is providing nav tag to create navigation bar,this can
+  be applied with backgound color black by using bootstrap css
+  classes navbar and navbar-inverse
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

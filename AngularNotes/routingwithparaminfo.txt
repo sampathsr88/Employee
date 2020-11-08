@@ -1,0 +1,73 @@
+ routing with parameter:
+ -----------------------
+ *route path can receive data from url with the help of parameter,
+  it is similar to querystring in traditional web development
+   i.e
+    http://../<>.aspx|jsp?catename='mobiles'&price=10000
+                                |
+                             querystring
+                   [traditional web development]
+
+    http://../pathname/mobiles/10000
+                           |
+                       parameters data
+                         [routing]
+
+ *component class can read route path parameters data with the
+  help of ActivatedRoute class provided by @angular/router package,
+  this class provides Params method,this method will return
+  Observable,register callback func to read paras data
+
+   displaycomponent                           routes
+        |                 details/p001       path          component
+  p001 samsung  more..--------------------->details/:pid  detailscomponent
+             [details,p001]                                    |
+                                                        this._activatedroute.params.subscribe(
+  p002 oppo     more..                                       paras=>{
+             [details,p002]                                paras["pid"]-->p001|p002
+                                                                  })
+
+ *parameter name should be prefixed with :
+
+
+ <a [routerLink]="['/details',p.prodid]">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

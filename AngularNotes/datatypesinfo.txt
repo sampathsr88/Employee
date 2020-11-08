@@ -1,0 +1,145 @@
+ datatypes in javascript:
+ ------------------------
+ 1.number--it can store numeric data[maximum 2^53 - 1]
+ 2.bigint--it can store numeric data greater than number
+           datatype[i.e  >2^53 -1 ],bigint numeric data
+           should end with n
+ 3.boolean--it can store true|false
+ 4.string--it can store character or characters
+ 5.null  --it can store null data[null keyword]
+ 6.undefined--it is default datatype
+              [variable declaration without assigning
+               value will be store with undefined]
+     var a;
+    console.log(a);--->undefined
+ *javascript is "dynamic typed language",where the type
+  will be applied implicitly|automatically based on value
+
+     a=100   -->number      number a[not accepted]
+     a="xyz" -->string
+     b       -->undefined
+ *javascript is providing 3 keywords to declare a
+  variable
+   1.let--it allows block level declaration[block scoped]
+   2.var--it allows function level declaration[function scoped]
+   3.const--it allows block level constant variable
+            declaration,the value is fixed
+ *variable dec syntax:
+      let|var|const  <varname>=<value>;
+
+   ->let and var allows variable declaration without
+     assigning value[initialization]
+   ->const doesn't allow variable declaration without
+     initialization
+ *let and const are introduced with es6[or es2015]
+
+example:
+--------
+*create es folder with in angularbatch29 folder[e drive]
+*goto notepad
+   var prodid=100;  //number
+   var prodname="dell"; //string
+   var isavailable=true; //boolean
+  console.log(prodid,prodname,isavailable);
+  console.log(typeof(prodid),typeof(prodname),typeof(isavailable));
+   var a; //type is undefined value is undefined
+  console.log(a,typeof(a));
+  prodid="p001";
+  console.log(prodid,typeof(prodid));
+  const restapiurl="http://bbb.com/api/inventory";
+  console.log(restapiurl);
+
+
+*save as datatype.js[e:\angularbatch29\es]
+*goto command window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+              

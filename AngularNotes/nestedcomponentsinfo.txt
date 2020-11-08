@@ -1,0 +1,238 @@
+ nested component with sharing data:
+ -----------------------------------
+  displaycomponent
+       |
+   prods display in table format
+     pid  name price
+    p001   aa  6000
+      ...
+
+
+  autocompletecomponent
+       |
+  prods display in table format
+    pid  name price
+     ...   ..   ..
+
+ *the above repetition can be avoided by creating a reusable
+  component,this becomes a nested component into another component
+
+   prodscomponent--->template--> <table>...</table>
+   [selector:app-prods]
+        |
+   @Input()
+   prods variable
+
+
+
+   displaycomponent--->template--><app-prods [prods]="prods1">
+        |
+    prods1 variable
+    [products info]
+
+ *the data can be shared between parent to child and child to
+  parent by using input and output properties,this requires
+  following things
+   1.Input decorator
+        ->this is used to declare input property to achieve
+          property binding
+        ->this can be used with in child component to receive data
+          from parent component[outter component]
+
+  2.Output decorator
+       ->this is used to declare output property to achieve
+         event binding
+       ->this can be used with in child component to send data
+         to parent component
+       ->this should be applied to EventEmitter
+
+  3.EventEmitter class
+       ->this is used to create a custom event to component
+       ->this comes with emit method to call sub program binded to
+         an event
+    syntax:
+       @Output()
+        <eventname>=new EventEmitter<type>();
+                                       |
+                                payload type
+
+      this.<eventname>.emit(data);
+
+     ->eventname acts like a function pointer to receive an
+       address of a method,this can be called using emit
+
+example:
+--------
+*create child component to display catename and prod info by receiving
+ from parent component
+  >ng g c child --flat
+
+*goto child.component.ts
+ import{Component,Input,Output,EventEmitter} from "@angular/core";
+    ...
+  selector:"app-child"
+    ...
+ export class ChildComponent ..
+ {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

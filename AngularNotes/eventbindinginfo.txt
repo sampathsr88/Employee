@@ -1,0 +1,225 @@
+event binding:
+--------------
+*binding component class method to a control event is called
+ "event binding"
+*this will flow data from template to component
+
+  component                template
+     |                       |
+   m1(s)                  button--click="m1('hello')  
+      |                                       |
+       ---------------------------------------
+*event binding requires parenthesis ()
+*syntax:
+  <tagname (eventname)="methodname">
+*angular event names are same as html event names without "on"
+ keyword
+    html event                     angular event
+       |                               |
+   onclick---------------------------click
+   onmouseenter----------------------mouseenter
+   onmouseleave----------------------mouseleave
+      ..                                 ...
+
+*html event requires javascript function
+*angular event requires component class method
+*control can have html event and angular event,in this case
+ html event will be executed first 
+
+example:
+--------
+*goto vs code and open app1 folder
+*goto terminal
+ >ng g c eventdemo --flat
+*goto eventdemo.component.ts
+    ...
+ selector:"app-root"
+    ...
+ export class EventComponent ..
+ {
+  msg:string="";
+   textcolor:string="blue";
+
+   m1(s:string){
+     this.msg=s;
+   }
+   m2(){
+     this.msg="";
+   }
+
+ *goto eventdemo.component.html
+  <button (mouseenter)="m1('saving user info')" (mouseleave)="m2()">
+    Register
+</button>
+<br>
+<h2 [style.color]="textcolor">
+    {{msg}}
+</h2>
+
+ *goto app.module.ts
+      ...
+  bootstrap:[EventdemoComponent]
+
+ *goto index.html
+     ...
+  <body>
+  <app-root></app-root>
+
+ >ng s -o
+   ..                      saving..
+  <- register<-----mouseenter----------------m1(s)
+  |                                         {
+  |     {{msg}}<-----------------------------this.msg=s
+  |       |                                 }
+  |     saving user info
+ mouseleave    |
+  |            |
+ m2(){ this.msg="" }
+
+ note:
+ -----
+ whenever variable[msg] value changes,angular will execute
+ interpolation statement to show current value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

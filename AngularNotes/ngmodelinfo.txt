@@ -1,0 +1,155 @@
+ ngModel directive:
+ ------------------
+ *this is used to implement twoway databinding
+ *syntax:
+   <tagname [(ngModel)]="varname">
+            |        |
+      property      event
+      binding       binding
+
+ *ngModel directive will internally implements
+  property binding and eventbinding
+
+ *ngModel can be applied to input tag,textarea tag and
+  select tag[dropdownlist and listbox]
+ *ngModel directive comes with FormsModule,this module comes
+  with angular/forms node package
+                     imports
+    FormsModule   ----------------> AppModule
+        |                               |
+  ngModel directive                   component1--><input [(ngModel)]="varname">
+                                      component2
+                                        ..
+
+example:
+--------
+ *click on +[new terminal] button
+ >ng g c ngmodel --flat
+
+ *goto ngmodel.component.ts
+    ...
+  selector:"app-root"
+    ...
+ export class NgmodelComponent ..
+ {
+  price:number=0;
+  qty:number=0;
+
+ *goto ngmodel.component.html
+  <div style="font-size:x-large;margin:20px">
+    enter price:<input type="number" [(ngModel)]="price"> <br>
+    enter qty:<input type="number" [(ngModel)]="qty"> <br>
+    total cost: {{price*qty}}
+</div>
+
+ *goto app.module.ts
+    ...
+ import{FormsModule} from "@angular/forms";
+ @NgModule({
+       ...
+   imports:[..,FormsModule]
+ bootstrap:[NgmodelComponent]
+     })
+   ...
+
+ *goto browser [if already server is running]
+   ..
+
+ note:
+ ----
+ *square brackets and parenthesis can be avoided with ngModel
+  directive using "bindon" keyword
+     
+          goto ngmodel.component.html
+                  |
+        <input type="number"  bindon-ngModel="price">
+                  ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

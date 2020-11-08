@@ -1,0 +1,186 @@
+ example to display prods info in a sorted order based on user column
+ heading click
+ ---------------------------------------------------------------------
+  >ng g c sortdemo --flat
+
+ *goto sortdemo.component.ts
+     ...
+  selector:"app-root"
+     ...
+  export class SortdemoComponent ..
+  {
+   //copy and paste json collection from autocomplete example
+   prods=[
+    {"pid":"p001","name":"samsung","price":10000},
+    {"pid":"p002","name":"htc","price":6000},
+    {"pid":"p003","name":"sony","price":20000},
+    {"pid":"p0041","name":"hp","price":30000},
+  ];
+  sortdata(colname:string)
+  {
+  //para will receive user selected columnname
+    this.prods.sort(function(a,b){
+       if(a[colname]>b[colname])
+         return 1;//it will swap elements
+    });
+  }
+
+   prods
+     |
+ pid  name  price
+ p001  aa   10000----a     if(a[price]>b[price])
+                                |        |
+                               10000     6000
+ p002  bb    6000----b        return 1;
+ p003  cc   12000                |
+                         p002 bb 6000
+                         p001 aa 10000
+                         p003 cc 12000
+*goto sortdemo.component.html
+ <table style="font-size:x-large;margin:20px" border="1">
+   <tr>
+       <th>
+           <a href="#" (click)="sortdata('pid')">
+               prodid
+           </a>
+       </th>
+       <th>
+        <a href="#" (click)="sortdata('name')">
+            name
+        </a>
+    </th>
+    <th>
+        <a href="#" (click)="sortdata('price')">
+            price
+        </a>
+    </th>
+   </tr>
+<tr *ngFor="let p of prods">
+    <td>{{p.pid}}</td>
+    <td>{{p.name}}</td>
+    <td>{{p.price}}</td>
+</tr>
+</table>
+*set SortdemoComponent as bootstrap
+
+ >ng s -o
+   ...
+
+ note:
+ -----
+ *perform ascending for 1st click of column and 2nd click with
+  descending
+ *autocomplete or sort example convert into custom pipe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,157 @@
+introduction to angular:
+------------------------
+*angular is an open source typescript framework to
+ develop web app[single page app] and mobile app
+*ionic mobile framework will support angular for
+ mobile app development
+*angular is developed using "typescript" language,so it
+ is called as "typescript framework"
+          the typescript programming is used in
+ angular application development
+  ->typescript language is provided by microsoft in the
+    year 2012
+  ->angular is provided by google using typescript
+    language in the year 2015
+*angular is not an extension to angularjs,it is
+ completly rebuilt from ground level
+
+  angular                         angularjs
+  ------                          ---------
+ 1.typescript based               1.javascript based
+ 2.component based architecture   2.mvc based architecture
+   [easy]                            [complex]
+ 3.supports object oriented       3.no support of 
+   programming                      object oriented prog
+ 4.better performance           4.lacking with performance
+   [5+ times better
+    performance over
+    angularjs]
+ 5.it supports multiple         5.it supports single
+   languages                      language[javascript]
+   [typescript,javascript
+    and dart-->given by
+               google]
+ 6.it provides type safety     6.it doesn't provide 
+   [compile time type checking   type safety 
+    is supported] 
+
+   var price:number;                   var price;
+       ...                                ...
+    price=dell                         price="dell"
+       |                                  |
+  error at compile time                no error
+ 7.tooling support            7.no tooling support
+   [angular cli tool]
+ 8.angular can be used for    8.it can be used only for
+   client side and server side  client side web developm
+   web development                                   ent
+  [angular universal
+   is used to developer
+    server side angular app,
+  it should be integrated with
+  node@express]
+*angular is provided by google to overcome angularjs
+ problems and to provide competition to reactjs[given by                                                facebook]
+
+  ECMA
+  Script6  --> typescript ---> angular
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

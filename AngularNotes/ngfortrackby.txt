@@ -1,0 +1,116 @@
+ ngfor with trackby option:
+ --------------------------
+    browser                      webserver[restapi]               database
+   angular app
+       |
+   component--------------------> ...                    -------->product table
+            <-------------------- ...                    <--------
+              p001 aaa
+              p002 bbb
+  ngfor
+    |
+  p001 aaa [tr]
+  p002 bbb [tr]
+   refresh[button]---------------->   ...                 ---------->
+                 <----------------     ...                <----------
+                   p001 aaa
+                   p002 bbb
+                   p003 ccc
+   ngfor
+     |
+  it will recreate tr for p001 and p002
+                          |
+                 this should be avoided-->the solu is trackby option
+
+*ngfor will keep track of objects by default based on reference,if the
+ objects comes with same data but with different reference then ngfor
+ will recreate html elements,this leads to performance issue while working
+ with large collection of data in realtime
+*this problem can be overcome using trackby option
+*trackby will inform ngfor to keep track of objects based on
+ particular column[mostly primary key col] rather than object reference
+*syntax:
+   <tagname  *ngFor="let varname of collection;
+                      trackBy:funcname">
+*trackby func para will receive an object and returns a column name to
+ ngfor to keep track of objects
+  syntax:
+     <funcname>(para:any):type
+     {
+        return colname;
+     }
+
+example:
+--------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
